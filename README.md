@@ -82,6 +82,9 @@ Check the [Open-PAV Documentation](https://markmaaaaa.github.io/OpenPAV) for mor
 
 ### Contributing Groups:
 - [CATS Lab](https://catslab.engr.wisc.edu/) (PI: [Xiaopeng Li](https://catslab.engr.wisc.edu/staff/xiaopengli/))
+- [CAT Lab](http://www.connectedandautonomoustransport.com/dr-zhengs-research.html) (PI: [Zuduo Zheng](https://civil.uq.edu.au/profile/857/zuduo-zheng))
+- [SHINE Lab](https://sites.google.com/site/danjuechen/) (PI: [Danjue Chen](https://ccee.ncsu.edu/people/danjuechen/))
+- NextGen-ITS Lab (PI: [David Kan](https://www.linkedin.com/in/david-kan-89b871ab/))
 
 ### Technical Contributors:
 
