@@ -88,7 +88,7 @@ Check the [Open-PAV Documentation](https://markmaaaaa.github.io/OpenPAV) for mor
 
 ### Technical Contributors:
 
-- [Ke Ma**](https://markmaaaaa.github.io/KeMa.github.io/), [Hang Zhou**]([Zhou, Hang – CATS Lab – UW–Madison](https://catslab.engr.wisc.edu/staff/zhou-hang/)), Keke Long** , Chengyuan Ma**.
+- [Ke Ma**](https://markmaaaaa.github.io/KeMa.github.io/), [Hang Zhou**](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long** , Chengyuan Ma**.
 
 ### Contribution Rules:
 
