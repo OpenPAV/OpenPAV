@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenPAV | Leaderboard</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"], ["$", "$"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">OpenPAV Platform</div>
+      <nav class="nav">
+        <a href="introduction.html">Introduction</a>
+        <a href="leaderboard.html" class="active">Leaderboard</a>
+        <a href="data.html">Data</a>
+        <a href="method.html">Method</a>
+        <a href="contributors.html">Contributors</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Billboard</h1>
+      <p>Performance billboard across Safety, Mobility, User Comfort, and Sustainability.</p>
+    </section>
+
+    <section class="card">
+      <h2>Results</h2>
+      <div class="tab-bar" role="tablist" aria-label="Billboard categories">
+        <button class="tab-btn active" data-target="tab-overall" type="button">Overall</button>
+        <button class="tab-btn" data-target="tab-safety" type="button">Safety</button>
+        <button class="tab-btn" data-target="tab-mobility" type="button">Mobility</button>
+        <button class="tab-btn" data-target="tab-comfort" type="button">User Comfort</button>
+        <button class="tab-btn" data-target="tab-sustainability" type="button">Sustainability</button>
+      </div>
+
+      <div id="tab-overall" class="tab-panel active">
+        <h3>Overall Ranking</h3>
+        <img
+          class="content-image"
+          src="images/ranking.png"
+          alt="Overall ranking radar chart"
+          onerror="this.onerror=null;this.src='images/rank.png';"
+        >
+        <p class="chart-caption">Overall performance radar chart across the four evaluation dimensions.</p>
+        <p class="table-note">Brand and dataset metadata used by the ranking.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Dataset</th>
+                <th>Supplementary Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>References</h4>
+        <ol class="doc-list">
+          <li>
+            Xia, X., Meng, Z., Han, X., Li, H., Tsukiji, T., Xu, R., Zheng, Z., Ma, J., 2023.
+            An automated driving systems data acquisition and analytics platform.
+            Transportation Research Part C: Emerging Technologies 151, 104120.
+          </li>
+          <li>
+            Wang, Y., Gunter, G., Nice, M., Work, D.B., 2019.
+            Estimating adaptive cruise control model parameters from on-board radar units.
+            arXiv preprint arXiv:1911.06454.
+          </li>
+          <li>
+            Zegeye, S. K., De Schutter, B., Hellendoorn, J., Breunesse, E. A., Hegyi, A., 2013.
+            Integrated macroscopic traffic flow, emission, and fuel consumption model for control purposes.
+            Transportation Research Part C: Emerging Technologies 31, 158-171.
+          </li>
+        </ol>
+      </div>
+
+      <div id="tab-safety" class="tab-panel">
+        <h3>Safety Ranking</h3>
+        <p class="lead">Safety is evaluated using Time-to-Collision (TTC). The columns in Table B represent TTC intervals, ordered from the collision state to increasingly safer conditions.</p>
+        <p class="table-note">TTC ranges probability by model.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Model</th>
+                <th>[0,0]</th>
+                <th>(0,0.25]</th>
+                <th>(0.25,0.75]</th>
+                <th>(0.75,1.5]</th>
+                <th>(1.5,3]</th>
+                <th>(3,5]</th>
+                <th>(5,8]</th>
+                <th>(8,&infin;)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Toyota Corolla LE (2020)</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>2.3E-07</td><td>1.3E-04</td><td>3.1E-03</td><td>1.0E+00</td></tr>
+              <tr><td>2</td><td>KGM Rexton (N/A)</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>2.1E-06</td><td>2.4E-04</td><td>1.1E-03</td><td>1.1E-02</td><td>9.9E-01</td></tr>
+              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>4.2E-08</td><td>9.9E-05</td><td>1.1E-04</td><td>2.2E-04</td><td>4.4E-04</td><td>8.2E-04</td><td>3.9E-03</td><td>9.9E-01</td></tr>
+              <tr><td>4</td><td>Tesla (N/A)</td><td>2.0E-06</td><td>7.4E-05</td><td>8.3E-05</td><td>1.8E-04</td><td>6.3E-04</td><td>3.1E-03</td><td>3.2E-02</td><td>9.6E-01</td></tr>
+              <tr><td>5</td><td>Mazda 3 (2019)</td><td>1.4E-06</td><td>4.1E-05</td><td>2.0E-04</td><td>4.5E-04</td><td>1.3E-03</td><td>2.7E-03</td><td>2.0E-02</td><td>9.8E-01</td></tr>
+              <tr><td>6</td><td>N/A (2019)</td><td>8.9E-06</td><td>1.5E-03</td><td>1.9E-03</td><td>2.0E-03</td><td>3.5E-03</td><td>2.0E-02</td><td>8.3E-02</td><td>8.9E-01</td></tr>
+              <tr><td>7</td><td>Ford S-Max (2018)</td><td>2.6E-05</td><td>7.5E-04</td><td>1.0E-03</td><td>1.1E-03</td><td>1.2E-03</td><td>2.6E-03</td><td>2.2E-02</td><td>9.7E-01</td></tr>
+              <tr><td>8</td><td>BMW X5 (2018)</td><td>3.6E-05</td><td>7.0E-04</td><td>3.1E-03</td><td>1.7E-03</td><td>9.6E-04</td><td>6.6E-04</td><td>4.2E-01</td><td>5.7E-01</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="table-note">Brand and dataset metadata used by the ranking.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Dataset</th>
+                <th>Supplementary Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Ranking Method</h4>
+        <p>
+          Safety is quantified using Time-to-Collision (TTC), a standard rear-end risk indicator. At time t, TTC is the
+          remaining time to collision assuming current speed and gap remain unchanged. Larger TTC indicates safer conditions,
+          while smaller TTC indicates higher risk.
+        </p>
+        <p>
+          In the aggregated Markov evaluation framework, TTC is discretized into hazard-prioritized blocks:
+        </p>
+        <div class="formula">
+          \[
+          \mathcal{K} = \{ [0,0], (0,0.25], (0.25,0.75], (0.75,1.5], (1.5,3], (3,5], (5,8], (8,\infty) \}.
+          \]
+        </div>
+        <p>
+          Let \( \pi_i^k \) be the probability that PAV \( i \) operates in TTC block \( k \). We define a transformed vector \( \mathbf{z}_i \) with:
+        </p>
+        <div class="formula">
+          \[
+          z_i^k =
+          \begin{cases}
+          -\log_{10}(\pi_i^k), & \pi_i^k > 0, \\
+          \infty, & \pi_i^k = 0.
+          \end{cases}
+          \]
+        </div>
+        <p>
+          PAVs are ranked using lexicographic comparison on \( \mathbf{z}_i \) from the most hazardous block to the least hazardous block.
+          This means we first compare collision-state probability, then proceed block-by-block only when ties occur. Under this
+          rule, models with larger probability mass in safety-critical TTC blocks receive lower ranks.
+        </p>
+
+        <h4>References</h4>
+        <ol class="doc-list">
+          <li>
+            Xia, X., Meng, Z., Han, X., Li, H., Tsukiji, T., Xu, R., Zheng, Z., Ma, J., 2023.
+            An automated driving systems data acquisition and analytics platform.
+            Transportation Research Part C: Emerging Technologies 151, 104120.
+          </li>
+          <li>
+            Wang, Y., Gunter, G., Nice, M., Work, D.B., 2019.
+            Estimating adaptive cruise control model parameters from on-board radar units.
+            arXiv preprint arXiv:1911.06454.
+          </li>
+        </ol>
+      </div>
+
+      <div id="tab-mobility" class="tab-panel">
+        <h3>Mobility Ranking</h3>
+        <p class="lead">Mobility is measured by average time headway. Smaller time headway implies higher roadway capacity and better mobility.</p>
+        <p class="table-note">Mobility ranking results by model.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Model</th>
+                <th>Time Headway (s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>BMW X5 (2018)</td><td>0.909</td></tr>
+              <tr><td>2</td><td>Toyota Corolla LE (2020)</td><td>0.981</td></tr>
+              <tr><td>3</td><td>Mazda 3 (2019)</td><td>1.223</td></tr>
+              <tr><td>4</td><td>N/A (2019)</td><td>1.334</td></tr>
+              <tr><td>5</td><td>Ford S-Max (2018)</td><td>1.379</td></tr>
+              <tr><td>6</td><td>KGM Rexton (N/A)</td><td>1.391</td></tr>
+              <tr><td>7</td><td>Lincoln MKZs (2016)</td><td>1.566</td></tr>
+              <tr><td>8</td><td>Tesla (N/A)</td><td>1.609</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Brand and dataset metadata used by the ranking.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Dataset</th>
+                <th>Supplementary Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>References</h4>
+        <ol class="doc-list">
+          <li>
+            Xia, X., Meng, Z., Han, X., Li, H., Tsukiji, T., Xu, R., Zheng, Z., Ma, J., 2023.
+            An automated driving systems data acquisition and analytics platform.
+            Transportation Research Part C: Emerging Technologies 151, 104120.
+          </li>
+          <li>
+            Wang, Y., Gunter, G., Nice, M., Work, D.B., 2019.
+            Estimating adaptive cruise control model parameters from on-board radar units.
+            arXiv preprint arXiv:1911.06454.
+          </li>
+        </ol>
+      </div>
+
+      <div id="tab-comfort" class="tab-panel">
+        <h3>User Comfort Ranking</h3>
+        <p class="lead">User comfort is evaluated using squared acceleration. Larger acceleration variations indicate lower comfort.</p>
+        <p class="table-note">User comfort ranking results by model.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Model</th>
+                <th>Acceleration Square (m<sup>2</sup>/s<sup>4</sup>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Ford S-Max (2018)</td><td>0.071</td></tr>
+              <tr><td>2</td><td>Lincoln MKZs (2016)</td><td>0.095</td></tr>
+              <tr><td>3</td><td>Mazda 3 (2019)</td><td>0.344</td></tr>
+              <tr><td>4</td><td>BMW X5 (2018)</td><td>0.586</td></tr>
+              <tr><td>5</td><td>N/A (2019)</td><td>1.144</td></tr>
+              <tr><td>6</td><td>KGM Rexton (N/A)</td><td>1.179</td></tr>
+              <tr><td>7</td><td>Tesla (N/A)</td><td>1.271</td></tr>
+              <tr><td>8</td><td>Toyota Corolla LE (2020)</td><td>1.368</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Brand and dataset metadata used by the ranking.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Dataset</th>
+                <th>Supplementary Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>References</h4>
+        <ol class="doc-list">
+          <li>
+            Xia, X., Meng, Z., Han, X., Li, H., Tsukiji, T., Xu, R., Zheng, Z., Ma, J., 2023.
+            An automated driving systems data acquisition and analytics platform.
+            Transportation Research Part C: Emerging Technologies 151, 104120.
+          </li>
+          <li>
+            Wang, Y., Gunter, G., Nice, M., Work, D.B., 2019.
+            Estimating adaptive cruise control model parameters from on-board radar units.
+            arXiv preprint arXiv:1911.06454.
+          </li>
+        </ol>
+      </div>
+
+      <div id="tab-sustainability" class="tab-panel">
+        <h3>Sustainability Ranking</h3>
+        <p class="lead">Sustainability is measured by fuel consumption rate. Lower fuel consumption indicates better sustainability performance.</p>
+        <p class="table-note">Sustainability ranking results by model. Fuel consumption is estimated using the VT-Micro model (Zegeye et al., 2013).</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Model</th>
+                <th>Fuel Consumption (L/s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Tesla (N/A)</td><td>0.0021</td></tr>
+              <tr><td>2</td><td>Ford S-Max (2018)</td><td>0.0029</td></tr>
+              <tr><td>3</td><td>KGM Rexton (N/A)</td><td>0.0032</td></tr>
+              <tr><td>4</td><td>N/A (2019)</td><td>0.0034</td></tr>
+              <tr><td>5</td><td>Lincoln MKZs (2016)</td><td>0.0035</td></tr>
+              <tr><td>6</td><td>Toyota Corolla LE (2020)</td><td>0.0036</td></tr>
+              <tr><td>7</td><td>Mazda 3 (2019)</td><td>0.0040</td></tr>
+              <tr><td>8</td><td>BMW X5 (2018)</td><td>0.0126</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Brand and dataset metadata used by the ranking.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Dataset</th>
+                <th>Supplementary Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>References</h4>
+        <ol class="doc-list">
+          <li>
+            Xia, X., Meng, Z., Han, X., Li, H., Tsukiji, T., Xu, R., Zheng, Z., Ma, J., 2023.
+            An automated driving systems data acquisition and analytics platform.
+            Transportation Research Part C: Emerging Technologies 151, 104120.
+          </li>
+          <li>
+            Wang, Y., Gunter, G., Nice, M., Work, D.B., 2019.
+            Estimating adaptive cruise control model parameters from on-board radar units.
+            arXiv preprint arXiv:1911.06454.
+          </li>
+          <li>
+            Zegeye, S. K., De Schutter, B., Hellendoorn, J., Breunesse, E. A., Hegyi, A., 2013.
+            Integrated macroscopic traffic flow, emission, and fuel consumption model for control purposes.
+            Transportation Research Part C: Emerging Technologies 31, 158-171.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Submit a Result</h2>
+      <p class="lead">For data and results submissions, please contact Technical Contributor Hang Zhou (hzhou364@wisc.edu).</p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>OpenPAV Platform Web</small>
+  </footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll(".tab-btn");
+      const panels = document.querySelectorAll(".tab-panel");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-target");
+          buttons.forEach((x) => x.classList.remove("active"));
+          panels.forEach((p) => p.classList.remove("active"));
+          btn.classList.add("active");
+          document.getElementById(target).classList.add("active");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

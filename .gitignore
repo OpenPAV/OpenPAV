@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+
+# Runtime storage artifacts
+storage/data/*
+storage/code/*
+storage/results/results.json
+!storage/data/.gitkeep
+!storage/code/.gitkeep
+!storage/results/.gitkeep

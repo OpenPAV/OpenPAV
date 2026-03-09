@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenPAV | Introduction</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">OpenPAV Platform</div>
+      <nav class="nav">
+        <a href="introduction.html" class="active">Introduction</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="data.html">Data</a>
+        <a href="method.html">Method</a>
+        <a href="contributors.html">Contributors</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>OpenPAV</h1>
+      <p>An open Production Automated Vehicle platform for data collection, behavior modeling, and performance evaluation.</p>
+    </section>
+
+    <section class="card">
+      <h2>Platform Overview</h2>
+      <p class="lead">
+        OpenPAV is an open-source ecosystem for evaluating production automated vehicles
+        (PAVs). It combines multi-source traffic data, behavior modeling tools, and benchmark evaluation workflows to support
+        transparent comparison across PAV brands.
+      </p>
+      <p class="lead">
+        Because PAV manufacturers often do not disclose internal controllers, OpenPAV adopts a data-driven pipeline that does
+        not require access to proprietary control algorithms. The platform is designed to build a scientific billboard that ranks
+        PAV performance and provides reliable references for researchers, industry, government, and the public.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Key Features</h2>
+      <ul class="doc-list">
+        <li>
+          <strong>Comprehensive Data Repository:</strong> OpenPAV aggregates diverse PAV-related datasets from multiple providers
+          and regions. Beyond PAV trajectories, the platform can incorporate supporting traffic context data such as human-driven
+          vehicle (HV) trajectories, vulnerable road user (VRU) data, and road geometry information to improve evaluation realism.
+        </li>
+      </ul>
+      <img src="images/Dataset.png" alt="OpenPAV datasets" class="content-image">
+
+      <ul class="doc-list">
+        <li>
+          <strong>Data-Driven Evaluation Pipeline:</strong> OpenPAV evaluates tested AVs without requiring their controllers to be
+          open-sourced. The method relies on data and surrogate behavior models, which makes cross-brand third-party evaluation feasible.
+          <ul class="sub-list">
+            <li><strong>Step 1 - Data Collection:</strong> collect PAV and supporting traffic datasets.</li>
+            <li><strong>Step 2 - Behavior Modeling:</strong> learn surrogate models from raw traffic data.</li>
+            <li><strong>Step 3 - Accelerated evaluation:</strong> generate targeted scenarios and compute statistical metrics.</li>
+          </ul>
+        </li>
+      </ul>
+      <img src="images/method.png" alt="OpenPAV method pipeline" class="content-image">
+
+      <ul class="doc-list">
+        <li>
+          <strong>Benchmark Results:</strong> OpenPAV outputs a ranking billboard across safety, mobility, energy efficiency, and
+          user comfort. As data coverage becomes richer, part of the indicators can be directly estimated from data for faster reporting.
+        </li>
+        <li>
+          <strong>Community Collaboration:</strong> the platform supports continuous contribution from data providers, modeling teams,
+          and evaluation contributors to improve benchmark quality and reproducibility.
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>What's New</h2>
+      <ul class="doc-list">
+        <li><strong>March 2026:</strong> The project has launched a new interface.</li>
+        <li><strong>November 2024:</strong> Initial project startup with installation and user guides.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Sponsors</h2>
+      <img src="images/Sponsors.png" alt="OpenPAV sponsors" class="content-image">
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>OpenPAV Platform Web</small>
+  </footer>
+
+</body>
+</html>
+

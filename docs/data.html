@@ -1,0 +1,116 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenPAV | Data</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">OpenPAV Platform</div>
+      <nav class="nav">
+        <a href="introduction.html">Introduction</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="data.html" class="active">Data</a>
+        <a href="method.html">Method</a>
+        <a href="contributors.html">Contributors</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Data</h1>
+      <p>Dataset background and data contribution context.</p>
+    </section>
+
+    <section class="card">
+      <h2>Original Data Sources</h2>
+      <p class="lead">The OpenPAV dataset currently examines 14 open-source PAV datasets from 7 providers.</p>
+      <ul class="doc-list">
+        <li>
+          <strong>Argoverse 2 Motion Forecasting Dataset.</strong> Collected from Austin (Texas), Detroit (Michigan), Miami (Florida), Pittsburgh (Pennsylvania), Palo Alto (California), and Washington, D.C. by Argo AI with researchers from Carnegie Mellon University and the Georgia Institute of Technology.
+          Available at
+          <a href="https://www.argoverse.org/av2.html" target="_blank" rel="noreferrer">Argoverse 2 Motion Forecasting Dataset</a>.
+        </li>
+        <li>
+          <strong>CATS Open Datasets.</strong> Three datasets collected in Tampa (Florida) and Madison (Wisconsin) by the CATS Lab.
+          Available at
+          <a href="https://github.com/CATS-Lab" target="_blank" rel="noreferrer">CATS Lab</a>.
+        </li>
+        <li>
+          <strong>Central Ohio ACC Datasets.</strong> Two datasets collated in Ohio by UCLA Mobility Lab and Transportation Research Center.
+          Available at
+          <a href="https://catalog.data.gov/dataset/advanced-driver-assistance-system-adas-equipped-single-vehicle-data-for-central-ohio" target="_blank" rel="noreferrer">Central Ohio ACC Data</a>.
+        </li>
+        <li>
+          <strong>MicroSimACC Dataset.</strong> Collected in Delray Beach, Loxahatchee, Boca Raton, and Parkland (Florida) by the Florida Atlantic University research group.
+          Available at
+          <a href="https://github.com/microSIM-ACC" target="_blank" rel="noreferrer">microSIM-ACC</a>.
+        </li>
+        <li>
+          <strong>OpenACC Database.</strong> Four datasets collected across Italy, Sweden, and Hungary by the European Commission Joint Research Centre.
+          Available at
+          <a href="https://data.europa.eu/data/datasets/9702c950-c80f-4d2f-982f-44d06ea0009f?locale=en" target="_blank" rel="noreferrer">data.europa.eu OpenACC</a>.
+        </li>
+        <li>
+          <strong>Vanderbilt ACC Dataset.</strong> Collected in Nashville (Tennessee) by Vanderbilt University.
+          Available at
+          <a href="https://acc-dataset.github.io/" target="_blank" rel="noreferrer">Adaptive Cruise Control Dataset</a>.
+        </li>
+        <li>
+          <strong>Waymo Open Dataset.</strong> Two datasets collected in San Francisco, Mountain View, and Los Angeles (California), Phoenix (Arizona), Detroit (Michigan), and Seattle (Washington) by Waymo.
+          Available at
+          <a href="https://waymo.com/open/data/motion/" target="_blank" rel="noreferrer">Waymo Motion Dataset</a>
+          and
+          <a href="https://data.mendeley.com/datasets/wfn2c3437n/2" target="_blank" rel="noreferrer">Processed Waymo Trajectory Data</a>. (Notice that Waymo states this dataset contains mixed AV/HV data with no label.)
+        </li>
+      </ul>
+      <img src="images/Dataset.png" alt="OpenPAV dataset overview" class="content-image">
+    </section>
+
+    <section class="card">
+      <h2>Processed Unified Dataset & Download</h2>
+      <p class="lead">
+        OpenPAV processed and organized the sources above into a unified longitudinal trajectory dataset ULTra-AV, where all records follow a standardized format.
+      </p>
+      <ul class="doc-list">
+        <li>
+          Zhou, H., Ma, K., Liang, S., Li, X., and Qu, X. (2024). <em>A unified longitudinal trajectory dataset for automated vehicle</em>.
+          <em>Scientific Data</em>, 11, 1123.
+          <a href="https://www.nature.com/articles/s41597-024-03795-y" target="_blank" rel="noreferrer">https://www.nature.com/articles/s41597-024-03795-y</a>
+        </li>
+      </ul>
+      <p class="lead">
+        Since the dataset is large, downloads are provided through:
+        <a href="https://figshare.com/articles/dataset/Ultra-AV_A_unified_longitudinal_trajectory_dataset_for_automated_vehicle/26339512" target="_blank" rel="noreferrer">
+          Ultra-AV: A unified longitudinal trajectory dataset for automated vehicle on figshare
+        </a>.
+        You can also find dataset information at
+        <a href="https://github.com/CATS-Lab/Filed-Experiment-Data-ULTra-AV" target="_blank" rel="noreferrer">https://github.com/CATS-Lab/Filed-Experiment-Data-ULTra-AV</a>.
+      </p>
+      <p class="lead">
+        <strong>Download data-processing related code package:</strong>
+      </p>
+      <a class="button-link" href="downloads/openpav_code_folder.zip" download>Data Process Code</a>
+    </section>
+
+    <section class="card">
+      <h2>Upload Data</h2>
+      <p class="lead">
+        For data and code submissions, please contact Technical Contributor Hang Zhou
+        (<a href="mailto:hzhou364@wisc.edu">hzhou364@wisc.edu</a>).
+      </p>
+    </section>
+    
+  </main>
+
+  <footer class="container footer">
+    <small>OpenPAV Platform Web</small>
+  </footer>
+
+</body>
+</html>

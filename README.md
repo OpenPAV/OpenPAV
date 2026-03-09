@@ -59,18 +59,18 @@ Open-PAV consists of the following components:
 - **Scenario Generation:** This module is designed to generate tailored safety-critical driving scenarios specific to a given AV model, aiming to evaluate its safety performance.
 - **Evaluation:** The generated scenarios are fed into pre-configured simulators, such as SUMO, VISSIM, and CARLA, for more accurate safety evaluation.
 
-Check the [Open-PAV Documentation](https://markmaaaaa.github.io/OpenPAV) for more details.
+Check the [Open-PAV Documentation](https://openpav.github.io/OpenPAV) for more details.
 
 ## Get Started
 
 ### User Guide
 
-- [Overview](https://markmaaaaa.github.io/OpenPAV/)
-- [Installation](https://markmaaaaa.github.io/OpenPAV/installation/)
-- [Quick Start](https://markmaaaaa.github.io/OpenPAV/quick_start/)
-- [Model Calibration](https://markmaaaaa.github.io/OpenPAV/model_calibration/)
-- [Simulation Integration](https://markmaaaaa.github.io/OpenPAV/simulation_integration/)
-- [Model Download](https://markmaaaaa.github.io/OpenPAV/model_download/)
+- [Overview](https://openpav.github.io/OpenPAV/)
+- [Installation](https://openpav.github.io/OpenPAV/installation/)
+- [Quick Start](https://openpav.github.io/OpenPAV/quick_start/)
+- [Model Calibration](https://openpav.github.io/OpenPAV/model_calibration/)
+- [Simulation Integration](https://openpav.github.io/OpenPAV/simulation_integration/)
+- [Model Download](https://openpav.github.io/OpenPAV/model_download/)
 
 ### Developer Guide
 
@@ -88,7 +88,7 @@ Check the [Open-PAV Documentation](https://markmaaaaa.github.io/OpenPAV) for mor
 
 ### Technical Contributors:
 
-- [Ke Ma**](https://markmaaaaa.github.io/KeMa.github.io/), [Hang Zhou**](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long** , Chengyuan Ma**.
+- [Ke Ma**](https://openpav.github.io/KeMa.github.io/), [Hang Zhou**](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long** , Chengyuan Ma**.
 
 ### Contribution Rules:
 

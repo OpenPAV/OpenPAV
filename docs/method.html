@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenPAV | Method</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">OpenPAV Platform</div>
+      <nav class="nav">
+        <a href="introduction.html">Introduction</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="data.html">Data</a>
+        <a href="method.html" class="active">Method</a>
+        <a href="contributors.html">Contributors</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Method</h1>
+      <p>Data-driven PAV evaluation pipeline with accelerated testing and benchmark ranking outputs.</p>
+    </section>
+
+    <section class="card">
+      <h2>Evaluation Pipeline</h2>
+      <p class="lead">
+        Since PAV manufacturers often do not disclose internal control algorithms, OpenPAV proposes a data-driven pipeline for
+        performance evaluation based on PAV-related data. This framework enables benchmarking without relying on proprietary AV controllers.
+      </p>
+      <img src="images/Framework.png" alt="OpenPAV framework" class="content-image">
+      <ul class="doc-list" style="margin-top:12px;">
+        <li>
+          <strong>Step 1 - Data Collection:</strong> OpenPAV invites data providers to submit PAV-related datasets, especially those
+          corresponding to the evaluated PAV models. Supporting inputs for simulation, such as HV trajectories, VRU data, and road
+          geometry, can be collected from public datasets or partner platforms.
+        </li>
+        <li>
+          <strong>Step 2 - Behavior Modeling:</strong> With these datasets, surrogate behavior models are developed to learn and mimic
+          the behaviors of all traffic participants from raw data. These models provide the basis for constructing realistic traffic simulations.
+        </li>
+        <li>
+          <strong>Step 3 - Accelerated evaluation:</strong> The system generates scenarios tailored to specific performance metrics and
+          runs accelerated tests to compute statistical results. When data volume becomes sufficiently large, some scenario indicators can
+          be extracted directly from data rather than relying only on extensive modeling and simulation.
+        </li>
+      </ul>
+      <p class="lead" style="margin-top:12px;">
+        The final outcome is a multi-dimensional ranking billboard of PAV performance, including safety, mobility, energy efficiency, and user comfort.
+      </p>
+      <p class="lead"><strong>Download full pipeline code package:</strong></p>
+      <a class="button-link" href="downloads/openpav_code_folder.zip" download>Full Pipline Code</a>
+    </section>
+
+    <section class="card">
+      <h2>Shifted Power Law Behavior Model</h2>
+      <p class="lead">
+        When performing stochastic trajectory prediction, many neural network-based approaches can accurately predict mean behavior,
+        but few methods explicitly model the full stochastic distribution. Typical formulations often assume a Gaussian distribution,
+        which can lead to limited performance in risky or highly adversarial scenarios.
+      </p>
+      <p class="lead">
+        To reduce the modeling gap in the tail distribution of vehicle behaviors, we develop a simple shifted power law model that can
+        represent risky driving behaviors using limited data. Results show that this model predicts both longitudinal and lateral
+        acceleration accurately in the tail region, improving evaluation performance in rare but safety-critical conditions.
+      </p>
+      <img src="images/scaling.png" alt="illustration of the shifted power low behavior model" class="content-image" style="width:70%;">
+      <p class="muted">
+        Reference: Chen, W., Huang, H., Ma, K., Li, H., Liang, S., Zhou, H., Li, X. (2025).
+        <em>Unveiling uniform shifted power law in stochastic human and autonomous driving behavior</em>.
+        arXiv preprint arXiv:2511.00659.
+      </p>
+      <p class="lead"><strong>Download behavior modeling code package:</strong></p>
+      <a class="button-link" href="downloads/openpav_behavior_modeling.zip" download>Behavior Modeling Code</a>
+    </section>
+
+    <section class="card">
+      <h2>State-Based Evaluation</h2>
+      <p class="lead">
+        In our previous study, we proposed a Markov state-based evaluation framework to efficiently analyze a PAV's life-cycle performance.
+        The PAV driving process is modeled as a Markov decision process, and the stochastic behavior models extracted from Step 2 are used
+        to define transition probabilities between states. Under Markov chain theory, the stationary distribution represents long-term system
+        behavior, so the metric distributions under that stationary distribution can represent the overall performance level of a given PAV model.
+      </p>
+      <p class="lead">
+        Because the number of driving states is extremely large, directly computing stationary distributions over all states is computationally
+        infeasible. To address this, we apply state space aggregation: original states are partitioned into a smaller number of blocks based on
+        performance metrics. We then compute stationary distributions over aggregated blocks instead of all individual states, which substantially
+        reduces dimensionality and computational cost.
+      </p>
+      <img src="images/distribution.png" alt="State distribution for state-based evaluation" class="content-image" style="width:65%;">
+      <p class="muted">
+        Reference: Ma, C., Zhou, H., Li, X. (2026). <em>Safety Validation of Automated Vehicles Using Markov Chain Aggregation</em>. Working Paper.
+      </p>
+      <p class="lead"><strong>Download evaluation code package:</strong></p>
+      <a class="button-link" href="downloads/openpav_evaluation.zip" download>Evaluation Code</a>
+    </section>
+
+    <section class="card">
+      <h2>Upload Methods and Code</h2>
+      <p class="lead">
+        For data and code submissions, please contact Technical Contributor Hang Zhou
+        (<a href="mailto:hzhou364@wisc.edu">hzhou364@wisc.edu</a>).
+      </p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>OpenPAV Platform Web</small>
+  </footer>
+
+</body>
+</html>
