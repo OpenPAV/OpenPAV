@@ -25,10 +25,10 @@ def parse_args():
     parser.add_argument("--train_epochs", type=int, default=1000, help="Training epochs")
     parser.add_argument("--train_batch_size", type=int, default=128, help="Training batch size")
     parser.add_argument("--train_ratio", type=float, default=0.8, help="Train/val split ratio")
-    parser.add_argument("--mc_iterations", type=int, default=200000, help="MonteCarlo iterations")
+    parser.add_argument("--mc_iterations", type=int, default=1000000, help="MonteCarlo iterations")
     parser.add_argument("--mc_interval", type=int, default=10000, help="MonteCarlo logging interval")
-    parser.add_argument("--markov_samples", type=int, default=200, help="Samples per Markov iteration")
-    parser.add_argument("--markov_stability", type=float, default=0.01, help="Markov stability threshold")
+    parser.add_argument("--markov_samples", type=int, default=500, help="Samples per Markov iteration")
+    parser.add_argument("--markov_stability", type=float, default=0.05, help="Markov stability threshold")
     parser.add_argument("--mode", type=str, default="CF", choices=["CF", "IDM"], help="Simulation mode")
     parser.add_argument(
         "--benchmark_model",

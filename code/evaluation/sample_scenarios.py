@@ -73,6 +73,26 @@ def sample_states_sequential(ttc_range, num_samples, start_idx=0):
     return sampled_states_with_prob, end_idx, exhausted
 
 
+def sample_states_random(ttc_range, num_samples):
+    """Sample random states in the TTC bucket without replacement."""
+    global state_weights
+    state_weights = {state: prob for state, prob in state_weights.items() if state[-1] < ttc_range[1]}
+    bucket_states = [state for state in state_weights if ttc_range[0] <= state[-1] < ttc_range[1]]
+    if not bucket_states:
+        return {}, True
+
+    sample_size = min(num_samples, len(bucket_states))
+    sampled_keys = random.sample(bucket_states, sample_size)
+    sampled_states_with_prob = {state: state_weights[state] for state in sampled_keys}
+
+    # Remove sampled states so repeated calls continue with unsampled states.
+    for state in sampled_keys:
+        del state_weights[state]
+
+    exhausted = sample_size >= len(bucket_states)
+    return sampled_states_with_prob, exhausted
+
+
 def analyze_sampled_states(sampled_states, ttc_range, mode="CF"):
     """Analyze sampled states and their transitions.
 
@@ -195,8 +215,17 @@ def random_sample_product(choices_list, sample_size):
     return sampled
 
 
-def sample_one_state(current_state, mode="CF", dt=DT):
+def sample_one_state(current_state, mode="CF", dt=DT, return_info=False):
     """Sample a next state based on transition probabilities."""
+    def _ret(next_state, transition_type, av_acc=None, metrics_eligible=True):
+        if not return_info:
+            return next_state
+        info = {
+            "transition_type": transition_type,
+            "av_acc": av_acc,
+            "metrics_eligible": metrics_eligible,
+        }
+        return next_state, info
 
     if mode in ("CF", "IDM"):
         FAV = current_state[0]
@@ -205,12 +234,12 @@ def sample_one_state(current_state, mode="CF", dt=DT):
         crash_state = _crash_state(mode)
 
         if LBV.space <= 0:
-            return initial_state
+            return _ret(initial_state, "reborn_from_crash_input", av_acc=None, metrics_eligible=False)
 
         acc_range, acc_distribution = FAV.get_action_distributions_AV(LBV, mode)
         acc_lead_changes, acc_lead_distribution = LBV.get_action_distributions_BV(FAV, [], mode)
         if len(acc_range) == 0 or len(acc_lead_changes) == 0:
-            return initial_state
+            return _ret(initial_state, "reborn_empty_action_space", av_acc=None, metrics_eligible=False)
 
         # AV: handle both continuous (scipy.stats) and discrete distributions
         if hasattr(acc_distribution, "pdf"):
@@ -218,7 +247,7 @@ def sample_one_state(current_state, mode="CF", dt=DT):
         else:
             p_av = np.array(acc_distribution, dtype=float)
         if p_av.size == 0:
-            return initial_state
+            return _ret(initial_state, "reborn_invalid_av_distribution", av_acc=None, metrics_eligible=False)
         if p_av.sum() > 0:
             p_av = p_av / p_av.sum()
         else:
@@ -228,7 +257,7 @@ def sample_one_state(current_state, mode="CF", dt=DT):
         # BV: still Gaussian
         p = np.array([acc_lead_distribution.pdf(a) * action_granularity for a in acc_lead_changes])
         if p.size == 0:
-            return initial_state
+            return _ret(initial_state, "reborn_invalid_bv_distribution", av_acc=None, metrics_eligible=False)
         p_sum = p.sum()
         if p_sum <= 0:
             p = np.ones_like(p) / len(p)
@@ -241,12 +270,13 @@ def sample_one_state(current_state, mode="CF", dt=DT):
         s_next = discretize(LBV.space + (LBV.velocity - FAV.velocity) * dt)
 
         if s_next <= 0:
-            return crash_state
+            return _ret(crash_state, "crash", av_acc=float(acc_FAV), metrics_eligible=True)
 
         if _is_out_of_domain(v_next, v_lead_next, s_next):
-            return initial_state
+            return _ret(initial_state, "reborn_out_of_domain", av_acc=float(acc_FAV), metrics_eligible=False)
 
-        return Vehicle(v_next, 0, FAV.lane_id), Vehicle(v_lead_next, s_next, LBV.lane_id)
+        next_state = Vehicle(v_next, 0, FAV.lane_id), Vehicle(v_lead_next, s_next, LBV.lane_id)
+        return _ret(next_state, "normal", av_acc=float(acc_FAV), metrics_eligible=True)
 
 
 def sample_states_weighted(states_weight, num_samples):

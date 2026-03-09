@@ -2,6 +2,7 @@ import os
 import sys
 import time
 import argparse
+import math
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(CURRENT_DIR)
@@ -16,6 +17,17 @@ import vehicles as veh
 print("Current Working Directory:", os.getcwd())
 DEFAULT_RESULTS_DIR = os.path.join(BASE_DIR, "results", "benchmark")
 
+# VT-Micro coefficients: rows=n1 (speed power), cols=n2 (acceleration power)
+VTM_COEFF = [
+    [-7.537, 0.4438, 0.1716, -0.0420],
+    [0.0973, 0.0518, 0.0029, 0.0071],
+    [-0.0030, -7.42e-04, 1.09e-04, 1.16e-04],
+    [5.3e-05, 6.0e-06, -1.0e-05, -6.0e-06],
+]
+# Derived from VTM polynomial over current action bounds v in [0, 50], a in [-2, 4]:
+# max exp(poly) is around 9.83e3, use a small safety margin.
+VTM_FUEL_RATE_MAX = 1.0e4
+
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -28,6 +40,30 @@ def parse_args():
     return parser.parse_args()
 
 
+def _vt_micro_fuel_rate(v: float, a: float) -> float:
+    poly = 0.0
+    for n1 in range(4):
+        v_pow = v ** n1
+        for n2 in range(4):
+            poly += VTM_COEFF[n1][n2] * v_pow * (a ** n2)
+    try:
+        return float(math.exp(poly))
+    except OverflowError:
+        return float("inf")
+
+
+def _compute_time_headway(state, mode):
+    if state is None:
+        return None
+    if mode in ("CF", "IDM"):
+        fav = state[0]
+        lead = state[1]
+        if fav.velocity <= 1e-6:
+            return None
+        return max(0.0, float(lead.space)) / float(fav.velocity)
+    return None
+
+
 def simulate_monte_carlo(initial_state, iterations, state_recorded, mode, interval, results_dir):
     start_time = time.time()
 
@@ -38,6 +74,16 @@ def simulate_monte_carlo(initial_state, iterations, state_recorded, mode, interv
 
     crash_log = []
     interval_crash_count = 0
+
+    # Additional statistics
+    sum_time_headway = 0.0
+    count_time_headway = 0
+    sum_acc_sq = 0.0
+    count_acc_sq = 0
+    sum_fuel_rate = 0.0
+    count_fuel_rate = 0
+    fuel_rate_clipped_count = 0
+    metrics_skipped_reborn_or_oob = 0
 
     state = initial_state
 
@@ -53,9 +99,35 @@ def simulate_monte_carlo(initial_state, iterations, state_recorded, mode, interv
         if state is None or current_ttc <= 0:
             state = initial_state
         else:
-            next_state_result = sample.sample_one_state(state, mode, dt=DT)
+            next_state_result, step_info = sample.sample_one_state(state, mode, dt=DT, return_info=True)
             next_ttc = calculate_ttc(next_state_result, mode)
             next_ttc_category = get_ttc_category(next_ttc)
+
+            if mode in ("CF", "IDM") and step_info.get("metrics_eligible", True):
+                thw = _compute_time_headway(state, mode)
+                if thw is not None:
+                    sum_time_headway += thw
+                    count_time_headway += 1
+
+                v_curr = float(state[0].velocity)
+                # Use sampled AV action acceleration (bounded by policy), not state-diff jump.
+                acc_fav = step_info.get("av_acc")
+                if acc_fav is None:
+                    v_next = float(next_state_result[0].velocity)
+                    acc_fav = (v_next - v_curr) / DT
+                acc_fav = float(acc_fav)
+                sum_acc_sq += acc_fav * acc_fav
+                count_acc_sq += 1
+
+                fuel_rate = _vt_micro_fuel_rate(max(0.0, v_curr), acc_fav)
+                if math.isfinite(fuel_rate):
+                    if fuel_rate > VTM_FUEL_RATE_MAX:
+                        fuel_rate = VTM_FUEL_RATE_MAX
+                        fuel_rate_clipped_count += 1
+                    sum_fuel_rate += fuel_rate
+                    count_fuel_rate += 1
+            elif mode in ("CF", "IDM"):
+                metrics_skipped_reborn_or_oob += 1
 
             transition_counts[f"{current_ttc_category} to {next_ttc_category}"] += 1
 
@@ -74,7 +146,19 @@ def simulate_monte_carlo(initial_state, iterations, state_recorded, mode, interv
             with open(os.path.join(results_dir, "crash_log.txt"), "a") as f:
                 f.write(f"{log_entry[0]}\t{log_entry[1]}\t{log_entry[2]}\n")
 
-    return ttc_counts, transition_counts, states_prob_record, critical_state, crash_log
+    additional_stats = {
+        "avg_time_headway": (sum_time_headway / count_time_headway) if count_time_headway > 0 else None,
+        "avg_acceleration_square": (sum_acc_sq / count_acc_sq) if count_acc_sq > 0 else None,
+        "avg_fuel_consumption_rate_vtm": (sum_fuel_rate / count_fuel_rate) if count_fuel_rate > 0 else None,
+        "fuel_consumption_rate_cap_vtm": VTM_FUEL_RATE_MAX,
+        "fuel_rate_clipped_count": fuel_rate_clipped_count,
+        "metrics_skipped_reborn_or_oob": metrics_skipped_reborn_or_oob,
+        "time_headway_sample_count": count_time_headway,
+        "acceleration_sample_count": count_acc_sq,
+        "fuel_rate_sample_count": count_fuel_rate,
+    }
+
+    return ttc_counts, transition_counts, states_prob_record, critical_state, crash_log, additional_stats
 
 
 def main():
@@ -93,7 +177,7 @@ def main():
         state_recorded = True
     iterations = args.iterations
 
-    ttc_prob, transition_counts, states_prob_record, critical_state, crash_log = simulate_monte_carlo(
+    ttc_prob, transition_counts, states_prob_record, critical_state, crash_log, additional_stats = simulate_monte_carlo(
         initial_state, iterations, state_recorded, mode, interval=interval, results_dir=results_dir
     )
 
@@ -118,6 +202,7 @@ def main():
     save_to_json(critical_state, os.path.join(results_dir, "critical_states.json"))
     transition_data_filename = os.path.join(results_dir, f"transition_data.json")
     save_to_json(transition_data, transition_data_filename)
+    save_to_json(additional_stats, os.path.join(results_dir, "additional_stats.json"))
 
     if state_recorded:
         save_to_json(states_prob_record, os.path.join(results_dir, "states_record.json"))

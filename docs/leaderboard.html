@@ -49,7 +49,7 @@
       <div id="tab-overall" class="tab-panel active">
         <h3>Overall Ranking</h3>
         <img
-          class="content-image"
+          class="content-image ranking-image"
           src="images/ranking.png"
           alt="Overall ranking radar chart"
           onerror="this.onerror=null;this.src='images/rank.png';"
@@ -126,9 +126,9 @@
               <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>4.2E-08</td><td>9.9E-05</td><td>1.1E-04</td><td>2.2E-04</td><td>4.4E-04</td><td>8.2E-04</td><td>3.9E-03</td><td>9.9E-01</td></tr>
               <tr><td>4</td><td>Tesla (N/A)</td><td>2.0E-06</td><td>7.4E-05</td><td>8.3E-05</td><td>1.8E-04</td><td>6.3E-04</td><td>3.1E-03</td><td>3.2E-02</td><td>9.6E-01</td></tr>
               <tr><td>5</td><td>Mazda 3 (2019)</td><td>1.4E-06</td><td>4.1E-05</td><td>2.0E-04</td><td>4.5E-04</td><td>1.3E-03</td><td>2.7E-03</td><td>2.0E-02</td><td>9.8E-01</td></tr>
-              <tr><td>6</td><td>N/A (2019)</td><td>8.9E-06</td><td>1.5E-03</td><td>1.9E-03</td><td>2.0E-03</td><td>3.5E-03</td><td>2.0E-02</td><td>8.3E-02</td><td>8.9E-01</td></tr>
-              <tr><td>7</td><td>Ford S-Max (2018)</td><td>2.6E-05</td><td>7.5E-04</td><td>1.0E-03</td><td>1.1E-03</td><td>1.2E-03</td><td>2.6E-03</td><td>2.2E-02</td><td>9.7E-01</td></tr>
-              <tr><td>8</td><td>BMW X5 (2018)</td><td>3.6E-05</td><td>7.0E-04</td><td>3.1E-03</td><td>1.7E-03</td><td>9.6E-04</td><td>6.6E-04</td><td>4.2E-01</td><td>5.7E-01</td></tr>
+              <tr><td>6</td><td>BMW X5 (2018)</td><td>6.5E-06</td><td>1.1E-04</td><td>3.5E-04</td><td>8.5E-05</td><td>2.6E-05</td><td>1.2E-03</td><td>4.0E-01</td><td>6.0E-01</td></tr>
+              <tr><td>7</td><td>N/A (2019)</td><td>8.9E-06</td><td>1.5E-03</td><td>1.9E-03</td><td>2.0E-03</td><td>3.5E-03</td><td>2.0E-02</td><td>8.3E-02</td><td>8.9E-01</td></tr>
+              <tr><td>8</td><td>Ford S-Max (2018)</td><td>2.6E-05</td><td>7.5E-04</td><td>1.0E-03</td><td>1.1E-03</td><td>1.2E-03</td><td>2.6E-03</td><td>2.2E-02</td><td>9.7E-01</td></tr>
             </tbody>
           </table>
         </div>
@@ -146,14 +146,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
               <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
-              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
-              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
               <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
-              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
               <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
               <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
             </tbody>
           </table>
         </div>
@@ -220,13 +220,13 @@
             </thead>
             <tbody>
               <tr><td>1</td><td>BMW X5 (2018)</td><td>0.909</td></tr>
-              <tr><td>2</td><td>Toyota Corolla LE (2020)</td><td>0.981</td></tr>
-              <tr><td>3</td><td>Mazda 3 (2019)</td><td>1.223</td></tr>
-              <tr><td>4</td><td>N/A (2019)</td><td>1.334</td></tr>
-              <tr><td>5</td><td>Ford S-Max (2018)</td><td>1.379</td></tr>
-              <tr><td>6</td><td>KGM Rexton (N/A)</td><td>1.391</td></tr>
-              <tr><td>7</td><td>Lincoln MKZs (2016)</td><td>1.566</td></tr>
-              <tr><td>8</td><td>Tesla (N/A)</td><td>1.609</td></tr>
+              <tr><td>2</td><td>Toyota Corolla LE (2020)</td><td>0.975</td></tr>
+              <tr><td>3</td><td>Ford S-Max (2018)</td><td>1.007</td></tr>
+              <tr><td>4</td><td>Mazda 3 (2019)</td><td>1.211</td></tr>
+              <tr><td>5</td><td>N/A (2019)</td><td>1.370</td></tr>
+              <tr><td>6</td><td>KGM Rexton (N/A)</td><td>1.390</td></tr>
+              <tr><td>7</td><td>Lincoln MKZs (2016)</td><td>1.669</td></tr>
+              <tr><td>8</td><td>Tesla (N/A)</td><td>1.721</td></tr>
             </tbody>
           </table>
         </div>
@@ -243,14 +243,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
               <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
-              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
-              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
-              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
               <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
               <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
-              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
             </tbody>
           </table>
         </div>
@@ -283,14 +283,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Ford S-Max (2018)</td><td>0.071</td></tr>
-              <tr><td>2</td><td>Lincoln MKZs (2016)</td><td>0.095</td></tr>
-              <tr><td>3</td><td>Mazda 3 (2019)</td><td>0.344</td></tr>
-              <tr><td>4</td><td>BMW X5 (2018)</td><td>0.586</td></tr>
-              <tr><td>5</td><td>N/A (2019)</td><td>1.144</td></tr>
-              <tr><td>6</td><td>KGM Rexton (N/A)</td><td>1.179</td></tr>
-              <tr><td>7</td><td>Tesla (N/A)</td><td>1.271</td></tr>
-              <tr><td>8</td><td>Toyota Corolla LE (2020)</td><td>1.368</td></tr>
+              <tr><td>1</td><td>N/A (2019)</td><td>0.038</td></tr>
+              <tr><td>2</td><td>Tesla (N/A)</td><td>0.042</td></tr>
+              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>0.053</td></tr>
+              <tr><td>4</td><td>KGM Rexton (N/A)</td><td>0.069</td></tr>
+              <tr><td>5</td><td>Ford S-Max (2018)</td><td>0.079</td></tr>
+              <tr><td>6</td><td>Mazda 3 (2019)</td><td>0.159</td></tr>
+              <tr><td>7</td><td>Toyota Corolla LE (2020)</td><td>0.163</td></tr>
+              <tr><td>8</td><td>BMW X5 (2018)</td><td>0.537</td></tr>
             </tbody>
           </table>
         </div>
@@ -307,13 +307,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
-              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
-              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
               <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
               <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
               <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
               <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
               <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
             </tbody>
           </table>
@@ -347,14 +347,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Tesla (N/A)</td><td>0.0021</td></tr>
-              <tr><td>2</td><td>Ford S-Max (2018)</td><td>0.0029</td></tr>
-              <tr><td>3</td><td>KGM Rexton (N/A)</td><td>0.0032</td></tr>
-              <tr><td>4</td><td>N/A (2019)</td><td>0.0034</td></tr>
-              <tr><td>5</td><td>Lincoln MKZs (2016)</td><td>0.0035</td></tr>
-              <tr><td>6</td><td>Toyota Corolla LE (2020)</td><td>0.0036</td></tr>
-              <tr><td>7</td><td>Mazda 3 (2019)</td><td>0.0040</td></tr>
-              <tr><td>8</td><td>BMW X5 (2018)</td><td>0.0126</td></tr>
+              <tr><td>1</td><td>Tesla (N/A)</td><td>0.00220</td></tr>
+              <tr><td>2</td><td>KGM Rexton (N/A)</td><td>0.00298</td></tr>
+              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>0.00300</td></tr>
+              <tr><td>4</td><td>Ford S-Max (2018)</td><td>0.00314</td></tr>
+              <tr><td>5</td><td>N/A (2019)</td><td>0.00318</td></tr>
+              <tr><td>6</td><td>Toyota Corolla LE (2020)</td><td>0.00326</td></tr>
+              <tr><td>7</td><td>Mazda 3 (2019)</td><td>0.00362</td></tr>
+              <tr><td>8</td><td>BMW X5 (2018)</td><td>0.01123</td></tr>
             </tbody>
           </table>
         </div>
@@ -372,11 +372,11 @@
             </thead>
             <tbody>
               <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
-              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
-              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
-              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
               <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
               <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
               <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
               <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
             </tbody>

@@ -54,7 +54,7 @@ CAV_DISTANCE_WANTED = 2.0  # [m]
 CAV_DELTA = 4.0  # acceleration exponent []
 
 # Distribution
-sigma_acc = 1.5  # standard deviation of acceleration noise
+sigma_acc = 1.2  # standard deviation of acceleration noise
 a_min = -2
 a_max = 4
 distribution_ignore_threshold = 1e-2
@@ -119,7 +119,7 @@ def generate_ttc_ranges_ln():
     # Negative to 0
     ttc_ranges.append((-float('inf'), 0))
     # Log-style positive ranges
-    boundaries = [0, 0.25, 0.5, 1.5, 3, 5, 8, float('inf')]
+    boundaries = [0, 0.25, 0.75, 1.5, 3, 5, 8, float('inf')]
     for i in range(len(boundaries) - 1):
         ttc_ranges.append((boundaries[i], boundaries[i + 1]))
     return ttc_ranges

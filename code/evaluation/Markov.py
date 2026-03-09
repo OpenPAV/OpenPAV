@@ -55,34 +55,36 @@ def iterate_ttc_analysis(initial_state_weights_file, num_samples, mode="CF", sta
     total_iteration=0
     global_start = time.time()
     _append_markov_log(f"[{_ts()}] Start Markov iterate_ttc_analysis mode={mode}, num_samples={num_samples}, stability={stability_threshold}")
-    
-    for iteration in range(len(reversed_ttc_ranges)):
+
+    # No sampling is needed for the final crash bucket (-inf, 0):
+    # its row is enforced by crash-rebirth rule.
+    sampled_ranges = reversed_ttc_ranges[:-1]
+    last_iteration = -1
+    for iteration, ttc_range in enumerate(sampled_ranges):
+        last_iteration = iteration
         gc.collect()
-        ttc_range = reversed_ttc_ranges[iteration]
         print(f"Starting analysis for TTC range {ttc_range}")
         stage_start = time.time()
         _append_markov_log(f"[{_ts()}] Start TTC block {ttc_range} (index={iteration})")
         iteration_count = 0
-        sample_offset = 0
         stable = 0
         previous_means = {}
         crash_hits_total = 0
         total_transition_counts = {}  # accumulate transition_counts
         while True:
             loop_start = time.time()
+            if iteration == 0 and iteration_count == 0:
+                # First block now follows the same staged-sampling workflow:
+                # initialize once from benchmark states, then sample uniformly in batches.
+                dm.state_weights = dm.initialize_from_file(initial_state_weights_file, ttc_range, mode)
+
             if iteration == 0:
-                # First block: process all benchmark states once, then move on.
-                if iteration_count > 0:
-                    _append_markov_log(f"[{_ts()}] Block {ttc_range} first-block one-pass finished; stop stage.")
-                    break
-                sampled_states_with_prob = dm.initialize_from_file(initial_state_weights_file, ttc_range, mode)
-                exhausted = True
+                first_block_batch = max(1, int(num_samples) * 10)
+                sampled_states_with_prob = dm.sample_states_uniform(ttc_range, first_block_batch)
             else:
-                sampled_states_with_prob, sample_offset, exhausted = dm.sample_states_sequential(
-                    ttc_range, num_samples, start_idx=sample_offset
-                )
+                sampled_states_with_prob = dm.sample_states_uniform(ttc_range, num_samples)
             if not sampled_states_with_prob:
-                _append_markov_log(f"[{_ts()}] Block {ttc_range} no more states to traverse; stop stage.")
+                _append_markov_log(f"[{_ts()}] Block {ttc_range} has no available states to sample; stop stage.")
                 break
 
             transition_counts, crash_hits = dm.analyze_sampled_states(sampled_states_with_prob, ttc_range, mode)
@@ -106,6 +108,23 @@ def iterate_ttc_analysis(initial_state_weights_file, num_samples, mode="CF", sta
                 normalized_transition = normalize_counts(total_transition_counts)
                 current_means = normalized_transition
 
+                # Restore legacy stop control:
+                # if next TTC bucket cannot be found for many iterations, stop early.
+                if not any(next_range[0] < state[-1] < next_range[1] for state in dm.state_weights):
+                    _append_markov_log(
+                        f"[{_ts()}] Block {ttc_range} cannot find next-bucket states "
+                        f"(iter={iteration_count}, next={next_range})"
+                    )
+                    if iteration_count > ITE_CONUT_CANNOT_FIND_NEXT:
+                        _append_markov_log(
+                            f"[{_ts()}] Block {ttc_range} stop early by ITE_CONUT_CANNOT_FIND_NEXT={ITE_CONUT_CANNOT_FIND_NEXT}"
+                        )
+                        accumulated_transition_counts = accumulate_counts(normalized_transition, accumulated_transition_counts)
+                        accumulated_transition_counts = _enforce_crash_rebirth_row(accumulated_transition_counts)
+                        save_to_json(accumulated_transition_counts, os.path.join(results_dir, 'accumulated_transition_counts.json'))
+                        return iteration, total_iteration
+                    continue
+
                 if previous_means:
                     max_change = get_max_change_rate(previous_means, current_means)
                     if ((0 <= max_change < stability_threshold) and iteration_count > ITE_MIN_CONUT) or iteration_count > ITE_MAX_CONUT:
@@ -114,18 +133,14 @@ def iterate_ttc_analysis(initial_state_weights_file, num_samples, mode="CF", sta
                         stable = 0
 
                     if stable > STABLE_CONUT:
-                        if next_range[0] == -float("inf") and next_range[1] == 0:
-                            ready_for_next = crash_hits_total >= num_samples
-                        else:
-                            next_bucket_count = len(
-                                {
-                                    state: prob
-                                    for state, prob in dm.state_weights.items()
-                                    if next_range[0] <= state[-1] < next_range[1]
-                                }
-                            )
-                            ready_for_next = next_bucket_count >= num_samples
-                        if ready_for_next:
+                        next_bucket_count = len(
+                            {
+                                state: prob
+                                for state, prob in dm.state_weights.items()
+                                if next_range[0] <= state[-1] < next_range[1]
+                            }
+                        )
+                        if next_bucket_count >= num_samples:
                             _append_markov_log(
                                 f"[{_ts()}] Block {ttc_range} reached stability with enough next-bucket states; stop stage."
                             )
@@ -138,9 +153,6 @@ def iterate_ttc_analysis(initial_state_weights_file, num_samples, mode="CF", sta
                 f"[{_ts()}] Block {ttc_range} loop={iteration_count} "
                 f"loop_elapsed={loop_elapsed:.2f}s stage_elapsed={stage_elapsed:.2f}s stable={stable} crash_hits_total={crash_hits_total}"
             )
-            if exhausted:
-                _append_markov_log(f"[{_ts()}] Block {ttc_range} traversed all sampled states; stop stage.")
-                break
 
         # 调用规范化和累积函数
         normalized_transition=normalize_counts(total_transition_counts)
@@ -152,8 +164,9 @@ def iterate_ttc_analysis(initial_state_weights_file, num_samples, mode="CF", sta
     # Save accumulated transition counts for all iterations
     accumulated_transition_counts = _enforce_crash_rebirth_row(accumulated_transition_counts)
     save_to_json(accumulated_transition_counts, os.path.join(results_dir, 'accumulated_transition_counts.json'))
+    _append_markov_log(f"[{_ts()}] Skip TTC block {reversed_ttc_ranges[-1]} sampling by design.")
     _append_markov_log(f"[{_ts()}] Done Markov iterate_ttc_analysis total_elapsed={time.time() - global_start:.2f}s")
-    return iteration,total_iteration
+    return last_iteration,total_iteration
 
 
 
