@@ -1,14 +1,14 @@
 # Open-PAV
 
-Open-PAV (Open Production Automated Vehicle) is an open platform designed to facilitate **data collection, scenario generation, and evaluation** of production automated vehicle (PAV) behaviors. It integrates diverse datasets and calibrated vehicle models, making it an essential tool for researchers and developers aiming to study PAV dynamics and their impacts. The project encourages contributions from the research community and provides ready-to-use model parameters for seamless integration with simulation tools.
+Open-PAV (Open Production Automated Vehicle) is an open platform designed to facilitate **data collection, scenario generation, and evaluation** of production automated vehicle (PAV) behaviors. It integrates diverse datasets and calibrated vehicle models, making it an essential tool for researchers and developers aiming to study PAV dynamics and their impacts. The project encourages contributions from the research community and provides ready-to-use model parameters for seamless integration with simulation tools. Check the [Open-PAV Documentation](https://openpav.github.io/OpenPAV) for more details.
 
-![Framework](./GitPage/docs/images/Framework.png)
+![Framework](./docs/images/Framework.png)
 
 ## Data Sources and Contributors
 
 ### Original Data Sources:
 
-Currently the dataset has examined 13 open-source datasets from 7 providers, each providing distinct insights into AV behavior across various driving conditions and scenarios. They are:
+Currently the dataset has examined 14 open-source datasets from 7 providers, each providing distinct insights into AV behavior across various driving conditions and scenarios. They are:
 
 - **Argoverse 2 Motion Forecasting Dataset**. Collected from Austin in Texas, Detroit in Michigan, Miami in Florida, Pittsburgh in Pennsylvania, Palo Alto in California, and Washington, D.C. by Argo AI with researchers from Carnegie Mellon University and the Georgia Institute of Technology. Available at -  [Argoverse 2 Motion Forcasting Dataset](https://www.argoverse.org/av2.html).
 - **CATS Open Datasets**. Three datasets were gathered in Tampa, Florida, and Madison, Wisconsin by the CATS Lab. Available at - [CATS Lab](https://github.com/CATS-Lab).
@@ -18,7 +18,7 @@ Currently the dataset has examined 13 open-source datasets from 7 providers, eac
 - **Vanderbilt ACC Dataset**. Collected in Nashville, Tennessee by Vanderbilt University research group. Available at - [Adaptive Cruise Control Dataset](https://acc-dataset.github.io/).
 - **Waymo Open Dataset**. Two datasets were collected in six cities including San Francisco, Mountain View, and Los Angeles in California, Phoenix in Arizona, Detroit in Michigan, and Seattle in Washington by Waymo. Available at - [Waymo Motion Dataset](https://waymo.com/open/data/motion/) and [Vehicle trajectory data processed from the Waymo Open Dataset](https://data.mendeley.com/datasets/wfn2c3437n/2).
 
-<img src="./GitPage/docs/images/Dataset.png" alt="Major Components" width="600">
+<img src="./docs/images/Dataset.png" alt="Major Components" width="600">
 
 ### Processed Data Source:
 
@@ -41,13 +41,8 @@ By organizing the data from the above datasets, we processed a unified trajector
 
 ## What's New
 
-### March 2025
-- **Model Enhancements:** Improved calibration modeling methodology.
-- **Simulation Integration:** Configured packages for SUMO, Vissim, and basic parameters for models.
-
-### December 2024
-- **Dataset Expansion:** Added new open-source trajectory datasets from ULTra-AV datasets.
-- **Model Enhancements:** Improved basic logic for the project.
+- **March 2026:** The project has launched a new interface.
+- **November 2024:** Initial project startup with installation and user guides.
 
 
 ## Major Components
@@ -55,28 +50,8 @@ By organizing the data from the above datasets, we processed a unified trajector
 Open-PAV consists of the following components:
 
 - **Data Process:** Given the raw AV data (LiDAR, images, videos, trajectories) as input, this module converts data of the same type into a unified format and performs preliminary data cleaning.
-- **System Identification:** Using the processed AV data, this module calibrates the vehicle kinematic models of automated vehicles and exports them for simulation use. Users can also directly input their AV software stack to test their developed AV system within this module.
-- **Scenario Generation:** This module is designed to generate tailored safety-critical driving scenarios specific to a given AV model, aiming to evaluate its safety performance.
-- **Evaluation:** The generated scenarios are fed into pre-configured simulators, such as SUMO, VISSIM, and CARLA, for more accurate safety evaluation.
-
-Check the [Open-PAV Documentation](https://openpav.github.io/OpenPAV) for more details.
-
-## Get Started
-
-### User Guide
-
-- [Overview](https://openpav.github.io/OpenPAV/)
-- [Installation](https://openpav.github.io/OpenPAV/installation/)
-- [Quick Start](https://openpav.github.io/OpenPAV/quick_start/)
-- [Model Calibration](https://openpav.github.io/OpenPAV/model_calibration/)
-- [Simulation Integration](https://openpav.github.io/OpenPAV/simulation_integration/)
-- [Model Download](https://openpav.github.io/OpenPAV/model_download/)
-
-### Developer Guide
-
-- [API Reference](https://open-pav-documentation.readthedocs.io/en/latest/api.html)
-- [Class Design](https://open-pav-documentation.readthedocs.io/en/latest/developer_tutorial.html)
-- [Customizing Algorithms](https://open-pav-documentation.readthedocs.io/en/latest/customization.html)
+- **Behavior Modeling:** Using the processed AV data, this module calibrates the vehicle kinematic models of automated vehicles and exports them for simulation use. Users can also directly input their AV software stack to test their developed AV system within this module.
+- **Accelerated Evaluation:** This module is designed to generate tailored safety-critical driving scenarios specific to a given AV model, aiming to evaluate its safety performance.
 
 ## Contributors
 
@@ -88,19 +63,7 @@ Check the [Open-PAV Documentation](https://openpav.github.io/OpenPAV) for more d
 
 ### Technical Contributors:
 
-- [Ke Ma**](https://openpav.github.io/KeMa.github.io/), [Hang Zhou**](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long** , Chengyuan Ma**.
-
-### Contribution Rules:
-
-We welcome contributions to Open-PAV! Our projects have three levels of contributors. They are:
-
-1. *Raw Data Contributor (\*)*: Contribute raw PAV data to the platform.
-
-2. *Processed Data Contributor (\*\*)*. Contribute processed PAV data based on our standard format to the platform. 
-
-3. *Evaluation Contributor (\*\*\*)*. Contribute PAV software stacks or calibrated AV models by using “System Identification” module. Then run the “Evaluation” module in specific scenarios to evaluate its performance on, e.g., safety, mobility, energy, etc.
-
-For other users, you can also report bugs and suggest improvements by submitting issues.
+- [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long , Chengyuan Ma.
 
 ### Acknowledgements:
 
