@@ -1,6 +1,6 @@
 # Open-PAV
 
-Open-PAV (Open Production Automated Vehicle) is an open platform designed to facilitate **data collection, scenario generation, and evaluation** of production automated vehicle (PAV) behaviors. It integrates diverse datasets and calibrated vehicle models, making it an essential tool for researchers and developers aiming to study PAV dynamics and their impacts. The project encourages contributions from the research community and provides ready-to-use model parameters for seamless integration with simulation tools. Check the [Open-PAV Documentation](https://openpav.github.io/OpenPAV) for more details.
+OpenPAV (Open Production Automated Vehicle) is an open platform designed to facilitate **data collection, behavior modeling, and performance evaluation** of production automated vehicle (PAV). It integrates diverse datasets and calibrated vehicle models, making it an essential tool for researchers and developers aiming to study PAV dynamics and their impacts. The project encourages contributions from the research community and provides ready-to-use model parameters for seamless integration with simulation tools. Check the [OpenPAV Website](https://openpav.github.io/OpenPAV) for more details.
 
 ![Framework](./docs/images/Framework.png)
 
@@ -24,21 +24,6 @@ Currently the dataset has examined 14 open-source datasets from 7 providers, eac
 
 By organizing the data from the above datasets, we processed a unified trajectory dataset ULTra-AV, in which all data are represented using a standardized format. Available at -  [A unified longitudinal trajectory dataset for automated vehicle](https://www.nature.com/articles/s41597-024-03795-y) and [ULTra-AV](https://github.com/CATS-Lab/Filed-Experiment-Data-ULTra-AV).
 
-## Key Features
-
-- **Comprehensive Dataset:**
-  - A comprehensive trajectory dataset has been compiled by seven research teams. This dataset encompasses trajectory data from 14 AV brands and 33 AV models, drawn from 13 open-source AV datasets. All data have been converted into a unified vectorized format to enable efficient access and analysis. 
-  
-- **Kinematic Model Calibration:**
-  - Supports linear models, IDM models (for SUMO), Wiedemann-99 (for Vissim), and machine learning-based models.
-  - Includes pre-configured model parameters for direct use in traditional simulation software.
-
-- **Simulation Integration:**
-  - Enables rapid and accurate simulation of automated vehicle behavior and analysis of their impacts.
-
-- **Community Collaboration:**
-  - Designed to foster contributions and collaboration among researchers globally.
-
 ## What's New
 
 - **March 2026:** The project has launched a new interface.
@@ -55,12 +40,6 @@ Open-PAV consists of the following components:
 
 ## Contributors
 
-### Contributing Groups:
-- [CATS Lab](https://catslab.engr.wisc.edu/) (PI: [Xiaopeng Li](https://catslab.engr.wisc.edu/staff/xiaopengli/))
-- [CAT Lab](http://www.connectedandautonomoustransport.com/dr-zhengs-research.html) (PI: [Zuduo Zheng](https://civil.uq.edu.au/profile/857/zuduo-zheng))
-- [SHINE Lab](https://sites.google.com/site/danjuechen/) (PI: [Danjue Chen](https://ccee.ncsu.edu/people/danjuechen/))
-- NextGen-ITS Lab (PI: [David Kan](https://www.linkedin.com/in/david-kan-89b871ab/))
-
 ### Technical Contributors:
 
 - [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long , Chengyuan Ma.
@@ -68,11 +47,6 @@ Open-PAV consists of the following components:
 ### Acknowledgements:
 
 This project is partially supported by the Center for Connected and Automated Transportation (CCAT) through the project titled *"Traffic Control based on CARMA Platform for Maximal Traffic Mobility and Safety"*, National Institute for Congestion Reduction (NICR) through *"Transit Priority Phase II: Network Control in Realistic Settings with Heterogeneous Vehicles"* and *"Cordon-Metering Rules for Present-Day and Future Cities"*, and National Science Foundation (NSF) through *"NSF	CPS: Small: NSF-DST: Turning “Tragedy of the Commons (ToC)” into “Emergent Cooperative Behavior (ECB)” for Automated Vehicles at Intersections with Meta-Learning"*. We also sincerely appreciate all the dataset providers and contributors for making this work possible.
-
-## Relevant Publications
-
-- Zhou, H., Ma, K., Liang, S., Li, X. and Qu, X., 2024. A unified longitudinal trajectory dataset for automated vehicle. *Scientific Data*, *11*(1), p.1123.
-- Ma, K., Zhou, H., Liang, Z. and Li, X., 2025. Automated vehicle microscopic energy consumption study (AV-Micro): Data collection and model development. *Energy*, *320*, p.135096.
 
 ## License
 
