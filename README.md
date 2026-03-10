@@ -52,7 +52,7 @@ NextGen-ITS Lab (PI: David Kan)
 
 ### Technical Contributors:
 
-- [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long , Chengyuan Ma.
+- [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/), [Ke Ma](https://markmaaaaa.github.io/KeMa.github.io/), Keke Long , Chengyuan Ma.
 
 ### Related Publications:
 
