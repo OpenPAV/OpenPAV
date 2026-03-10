@@ -40,6 +40,16 @@ Open-PAV consists of the following components:
 
 ## Contributors
 
+### Contributing Groups
+
+CATS Lab (PI: Xiaopeng Li)
+
+CAT Lab (PI: Zuduo Zheng)
+
+SHINE Lab (PI: Danjue Chen)
+
+NextGen-ITS Lab (PI: David Kan)
+
 ### Technical Contributors:
 
 - [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long , Chengyuan Ma.
