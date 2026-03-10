@@ -42,11 +42,11 @@ Open-PAV consists of the following components:
 
 ### Contributing Groups
 
-CATS Lab (PI: Xiaopeng Li)
+[CATS Lab](https://catslab.engr.wisc.edu/) (PI: [Xiaopeng Li](https://catslab.engr.wisc.edu/staff/xiaopengli/))
 
-CAT Lab (PI: Zuduo Zheng)
+[CAT Lab](http://www.connectedandautonomoustransport.com/dr-zhengs-research.html) (PI: [Zuduo Zheng](https://civil.uq.edu.au/profile/857/zuduo-zheng))
 
-SHINE Lab (PI: Danjue Chen)
+[SHINE Lab](https://sites.google.com/site/danjuechen/) (PI: Danjue Chen)
 
 NextGen-ITS Lab (PI: David Kan)
 
@@ -54,9 +54,13 @@ NextGen-ITS Lab (PI: David Kan)
 
 - [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/), Keke Long , Chengyuan Ma.
 
+### Related Publications:
+
+- Zhou, H., Ma, K., Liang, S., Li, X., and Qu, X. (2024). *A unified longitudinal trajectory dataset for automated vehicle*. *Scientific Data*, 11, 1123.
+
 ### Acknowledgements:
 
-This project is partially supported by the Center for Connected and Automated Transportation (CCAT) through the project titled *"Traffic Control based on CARMA Platform for Maximal Traffic Mobility and Safety"*, National Institute for Congestion Reduction (NICR) through *"Transit Priority Phase II: Network Control in Realistic Settings with Heterogeneous Vehicles"* and *"Cordon-Metering Rules for Present-Day and Future Cities"*, and National Science Foundation (NSF) through *"NSF	CPS: Small: NSF-DST: Turning “Tragedy of the Commons (ToC)” into “Emergent Cooperative Behavior (ECB)” for Automated Vehicles at Intersections with Meta-Learning"*. We also sincerely appreciate all the dataset providers and contributors for making this work possible.
+This project is partially supported by the National Science Foundation (NSF) through "[NSF	CPS: Small: NSF-DST: Turning “Tragedy of the Commons (ToC)” into “Emergent Cooperative Behavior (ECB)” for Automated Vehicles at Intersections with Meta-Learning](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2343167)" (No. 2343167). We also sincerely appreciate all the dataset providers and contributors for making this work possible.
 
 ## License
 
