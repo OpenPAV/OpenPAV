@@ -60,7 +60,9 @@ NextGen-ITS Lab (PI: David Kan)
 
 ### Acknowledgements:
 
-This project is partially supported by the National Science Foundation (NSF) through "[NSF	CPS: Small: NSF-DST: Turning “Tragedy of the Commons (ToC)” into “Emergent Cooperative Behavior (ECB)” for Automated Vehicles at Intersections with Meta-Learning](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2343167)" (No. 2343167). We also sincerely appreciate all the dataset providers and contributors for making this work possible.
+This project is partially supported by the National Science Foundation (NSF) through "[NSF	CPS: Small: NSF-DST: Turning “Tragedy of the Commons (ToC)” into “Emergent Cooperative Behavior (ECB)” for Automated Vehicles at Intersections with Meta-Learning](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2343167)" (No. 2343167). We also acknowledge the support from [IEEE Intelligent Transportation Systems Society (ITSS) Emerging Transportation Technology Testing (ET3) Technical Committee](https://ieee-itss.org/chapters-committees/emerging-transportation-technology-testing).
+
+We also sincerely appreciate all the dataset providers and contributors for making this work possible. 
 
 ## License
 
