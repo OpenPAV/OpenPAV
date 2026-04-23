@@ -42,17 +42,41 @@ Open-PAV consists of the following components:
 
 ### Contributing Groups
 
-[CATS Lab](https://catslab.engr.wisc.edu/) (PI: [Xiaopeng Li](https://catslab.engr.wisc.edu/staff/xiaopengli/))
+- [CATS Lab](https://catslab.engr.wisc.edu/) (PI: [Xiaopeng Li](https://catslab.engr.wisc.edu/staff/xiaopengli/))
 
-[CAT Lab](http://www.connectedandautonomoustransport.com/dr-zhengs-research.html) (PI: [Zuduo Zheng](https://civil.uq.edu.au/profile/857/zuduo-zheng))
+- [ACEMS Lab](https://github.com/ACEMS-lab) (PI: [Tom Shi](https://www.xiaoweitom.com/))
 
-[SHINE Lab](https://sites.google.com/site/danjuechen/) (PI: Danjue Chen)
+- [CAT Lab](http://www.connectedandautonomoustransport.com/dr-zhengs-research.html) (PI: [Zuduo Zheng](https://civil.uq.edu.au/profile/857/zuduo-zheng))
 
-NextGen-ITS Lab (PI: David Kan)
+- [SHINE Lab](https://sites.google.com/site/danjuechen/) (PI: [Danjue Chen](https://ccee.ncsu.edu/people/danjuechen/))
 
-### Technical Contributors:
+- [NextGen-ITS Lab](https://www.linkedin.com/in/david-kan-89b871ab/) (PI: [David Kan](https://www.linkedin.com/in/david-kan-89b871ab/))
 
-- [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/), [Ke Ma](https://markmaaaaa.github.io/KeMa.github.io/), Keke Long , Chengyuan Ma.
+- [Mobility Lab](https://yaohandong.github.io/MobilityLab/index.html) (PI: [Handong Yao](https://engineering.uga.edu/team_member/handong-yao/))
+
+- [KITE Lab](https://github.com/KITE-Lab/) (PI: [Ke Ma](https://www.linkedin.com/in/ke-ma-1b32b0229/))
+
+- [CAMIs Lab](https://sites.google.com/view/camis-uga/people/q-li) (PI: [Qianwen Li](https://engineering.uga.edu/team_member/qianwen-li/))
+
+- [Yanbing Wang's Lab](https://yanbingwang.com/index.html) (PI: [Yanbing Wang](https://yanbingwang.com/index.html))
+
+- [iUTS Lab](http://depts.washington.edu/iuts/wordpress/) (PI: [Xuegang (Jeff) Ban](https://www.ce.washington.edu/facultyfinder/xuegang-jeff-ban))
+
+### Industry Partner
+
+- Gemma Wang (May Mobility)
+
+### Technical Contributors
+
+- [Hang Zhou](https://catslab.engr.wisc.edu/staff/zhou-hang/) (hzhou364@wisc.edu)
+- [Ke Ma](https://markmaaaaa.github.io/KeMa.github.io/) (kma62@wisc.edu)
+- Keke Long (klong23@wisc.edu)
+- Chengyuan Ma (cma97@wisc.edu)
+- [Ziyi Zhang](https://search.asu.edu/profile/5310363) (zzhan657@asu.edu)
+- Xiangyu Li (xli312@connect.hkust-gz.edu.cn)
+- [Mingyuan Yang](https://www.linkedin.com/in/mingyuan/) (mingyuan_yang@txstate.edu)
+- [Tianle Zhu](https://www.linkedin.com/in/tianle-zhu-6aba87251/) (tl.z@uga.edu)
+- Muhammad Fahad (muhamm72@uwm.edu)
 
 ### Related Publications:
 
