@@ -1,8 +1,44 @@
 import pandas as pd
-from geopy.distance import geodesic
 import numpy as np
+from pathlib import Path
+from math import asin, cos, radians, sin, sqrt
+
+try:
+    from geopy.distance import geodesic
+except ModuleNotFoundError:
+    class _Distance:
+        def __init__(self, kilometers):
+            self.kilometers = kilometers
+
+    def geodesic(location1, location2):
+        lat1, lon1 = location1
+        lat2, lon2 = location2
+        dlat = radians(lat2 - lat1)
+        dlon = radians(lon2 - lon1)
+        lat1 = radians(lat1)
+        lat2 = radians(lat2)
+        a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+        return _Distance(6371.0088 * 2 * asin(sqrt(a)))
 
 default_vehicle_length = 4.5
+
+UGA_COLUMNS = [
+    'Trajectory_ID', 'Time_Index',
+    'ID_LV', 'Type_LV', 'Pos_LV', 'Speed_LV', 'Acc_LV',
+    'ID_FAV', 'Pos_FAV', 'Speed_FAV', 'Acc_FAV',
+    'Spatial_Gap', 'Spatial_Headway', 'Speed_Diff'
+]
+UGA_INTEGER_COLUMNS = ['Trajectory_ID', 'ID_LV', 'Type_LV', 'ID_FAV']
+UGA_FLOAT_COLUMNS = [column for column in UGA_COLUMNS if column not in UGA_INTEGER_COLUMNS]
+
+
+def UGA_save_numeric_csv(data, output_path):
+    data = data[UGA_COLUMNS].copy()
+    for column in UGA_INTEGER_COLUMNS:
+        data[column] = pd.to_numeric(data[column], errors='raise').round().astype(int)
+    for column in UGA_FLOAT_COLUMNS:
+        data[column] = pd.to_numeric(data[column], errors='raise').astype(float)
+    data.to_csv(output_path, index=False, float_format='%.10f')
 
 
 def Vanderbilt_convert_format(input_path, output_path):
@@ -618,6 +654,80 @@ def Waymo_motion_convert_format(input_path, output_path):
     data = data.iloc[:-1]
 
     data.to_csv(output_path, index=False)
+
+
+def UGA_convert_format(input_path, output_path):
+    input_path = Path(input_path)
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    def read_vehicle(relative_path):
+        data = pd.read_csv(input_path / relative_path)
+        data = data[['Time', 'Latitude', 'Longitude', 'Speed']].copy()
+        data['Time'] = data['Time'].astype(str)
+        data['Timestamp'] = pd.to_datetime(data['Time'], utc=True)
+        return data.sort_values('Timestamp').reset_index(drop=True)
+
+    def calculate_distance(row):
+        leader_location = (row['Latitude_LV'], row['Longitude_LV'])
+        follower_location = (row['Latitude_FAV'], row['Longitude_FAV'])
+        return geodesic(leader_location, follower_location).kilometers * 1000
+
+    vehicle_pairs = [(0, 1), (1, 2), (2, 3)]
+    pair_frames = []
+    trajectory_id = 0
+
+    for experiment_id in range(1, 9):
+        vehicles = {
+            0: read_vehicle(f'LEADCAR/leadingcar{experiment_id}.csv'),
+            1: read_vehicle(f'FLWCAR1/followingcar_1_{experiment_id}.csv'),
+            2: read_vehicle(f'FLWCAR2/followingcar_2_{experiment_id}.csv'),
+            3: read_vehicle(f'FLWCAR3/followingcar_3_{experiment_id}.csv'),
+        }
+
+        for leader_id, follower_id in vehicle_pairs:
+            data = pd.merge(
+                vehicles[leader_id],
+                vehicles[follower_id],
+                on='Time',
+                suffixes=('_LV', '_FAV')
+            ).sort_values('Timestamp_LV').reset_index(drop=True)
+
+            if len(data) < 2:
+                continue
+
+            data['Trajectory_ID'] = trajectory_id
+            data['Time_Index'] = (data['Timestamp_LV'] - data['Timestamp_LV'].iloc[0]).dt.total_seconds()
+            data['ID_LV'] = leader_id
+            data['Type_LV'] = 1
+            data['ID_FAV'] = follower_id
+            data['Speed_LV'] = data['Speed_LV'].astype(float)
+            data['Speed_FAV'] = data['Speed_FAV'].astype(float)
+            data['Spatial_Headway'] = data.apply(calculate_distance, axis=1)
+            data['Spatial_Gap'] = data['Spatial_Headway'] - default_vehicle_length
+            data['Speed_Diff'] = data['Speed_LV'] - data['Speed_FAV']
+
+            dt = data['Time_Index'].shift(-1) - data['Time_Index']
+            data['Acc_LV'] = (data['Speed_LV'].shift(-1) - data['Speed_LV']) / dt
+            data['Acc_FAV'] = (data['Speed_FAV'].shift(-1) - data['Speed_FAV']) / dt
+
+            average_speed = (data['Speed_FAV'] + data['Speed_FAV'].shift(1)) / 2
+            step_time = data['Time_Index'].diff()
+            data['Pos_FAV'] = (step_time * average_speed).cumsum()
+            data.loc[0, 'Pos_FAV'] = 0
+            data['Pos_LV'] = data['Pos_FAV'] + data['Spatial_Headway']
+
+            data = data.iloc[:-1]
+            pair_frames.append(data[[
+                'Trajectory_ID', 'Time_Index',
+                'ID_LV', 'Type_LV', 'Pos_LV', 'Speed_LV', 'Acc_LV',
+                'ID_FAV', 'Pos_FAV', 'Speed_FAV', 'Acc_FAV',
+                'Spatial_Gap', 'Spatial_Headway', 'Speed_Diff'
+            ]])
+            trajectory_id += 1
+
+    data = pd.concat(pair_frames, ignore_index=True)
+    UGA_save_numeric_csv(data, output_path)
 
 
 def Argoverse_convert_format(input_path, output_path):

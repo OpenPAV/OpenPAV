@@ -43,24 +43,16 @@ Open-PAV consists of the following components:
 ### Contributing Groups
 
 - [CATS Lab](https://catslab.engr.wisc.edu/) (PI: [Xiaopeng Li](https://catslab.engr.wisc.edu/staff/xiaopengli/))
-
 - [ACEMS Lab](https://github.com/ACEMS-lab) (PI: [Tom Shi](https://www.xiaoweitom.com/))
-
 - [CAT Lab](http://www.connectedandautonomoustransport.com/dr-zhengs-research.html) (PI: [Zuduo Zheng](https://civil.uq.edu.au/profile/857/zuduo-zheng))
-
 - [SHINE Lab](https://sites.google.com/site/danjuechen/) (PI: [Danjue Chen](https://ccee.ncsu.edu/people/danjuechen/))
-
 - [NextGen-ITS Lab](https://www.linkedin.com/in/david-kan-89b871ab/) (PI: [David Kan](https://www.linkedin.com/in/david-kan-89b871ab/))
-
-- [Mobility Lab](https://yaohandong.github.io/MobilityLab/index.html) (PI: [Handong Yao](https://engineering.uga.edu/team_member/handong-yao/))
-
 - [KITE Lab](https://github.com/KITE-Lab/) (PI: [Ke Ma](https://www.linkedin.com/in/ke-ma-1b32b0229/))
-
 - [CAMIs Lab](https://sites.google.com/view/camis-uga/people/q-li) (PI: [Qianwen Li](https://engineering.uga.edu/team_member/qianwen-li/))
-
+- [Mobility Lab](https://yaohandong.github.io/MobilityLab/index.html) (PI: [Handong Yao](https://engineering.uga.edu/team_member/handong-yao/))
 - [Yanbing Wang's Lab](https://yanbingwang.com/index.html) (PI: [Yanbing Wang](https://yanbingwang.com/index.html))
-
 - [iUTS Lab](http://depts.washington.edu/iuts/wordpress/) (PI: [Xuegang (Jeff) Ban](https://www.ce.washington.edu/facultyfinder/xuegang-jeff-ban))
+- [UCLA Mobility Lab](https://mobility-lab.seas.ucla.edu/) (PI: [Jiaqi Ma ](https://mobility-lab.seas.ucla.edu/about/))
 
 ### Industry Partner
 
@@ -84,7 +76,7 @@ Open-PAV consists of the following components:
 
 ### Acknowledgements:
 
-This project is partially supported by the National Science Foundation (NSF) through "[NSF	CPS: Small: NSF-DST: Turning “Tragedy of the Commons (ToC)” into “Emergent Cooperative Behavior (ECB)” for Automated Vehicles at Intersections with Meta-Learning](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2343167)" (No. 2343167). We also acknowledge the support from [IEEE Intelligent Transportation Systems Society (ITSS) Emerging Transportation Technology Testing (ET3) Technical Committee](https://ieee-itss.org/chapters-committees/emerging-transportation-technology-testing).
+This project is partially supported by the National Science Foundation (NSF) through "[NSF CPS: Small: NSF-DST: Turning “Tragedy of the Commons (ToC)” into “Emergent Cooperative Behavior (ECB)” for Automated Vehicles at Intersections with Meta-Learning](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2343167)" (No. 2343167). We also acknowledge the support from [IEEE Intelligent Transportation Systems Society (ITSS) Emerging Transportation Technology Testing (ET3) Technical Committee](https://ieee-itss.org/chapters-committees/emerging-transportation-technology-testing).
 
 We also sincerely appreciate all the dataset providers and contributors for making this work possible. 
 

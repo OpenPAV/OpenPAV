@@ -4,6 +4,7 @@ from data_cleaning import *
 from model_calibration import *
 from data_analysis import *
 from pathlib import Path
+import pandas as pd
 
 
 def Vanderbilt_two_vehicle_ACC():
@@ -175,6 +176,46 @@ def CATS_platoon():
 
     calibration_result_path = './Dataset/CATS/output/calibration_platoon.csv'
     linear_regression = CFModelRegress(step3_data_path, 1)
+    linear_regression.main(calibration_result_path, 'linear')
+
+
+def UGA():
+    # Step 1: Convert dataset to a uniform car-following data format and analyze statistics.
+    original_data_path = './Dataset/UGA/data'
+    uniform_format_path = './Dataset/UGA/output/step1.csv'
+    UGA_convert_format(original_data_path, uniform_format_path)
+    step1_stat_result_path = './Dataset/UGA/output/step1_analysis'
+    analyze_statistics(uniform_format_path, step1_stat_result_path)
+
+    # Step 2: Clean data and revise trajectory IDs for further analysis.
+    clean_data = fill_and_clean(uniform_format_path, 10, [None, 10, None, 10, 10, None, None],
+                                1e10, -1e10, 1e10, -1e10,
+                                1e10, -1e10, 1e10, -1e10, 1e10, -1e10)
+    step2_data_path = './Dataset/UGA/output/step2.csv'
+    revise_traj_id(clean_data, step2_data_path, 0.1, 70, 0, 0)
+    UGA_save_numeric_csv(pd.read_csv(step2_data_path), step2_data_path)
+    step2_stat_result_path = './Dataset/UGA/output/step2_analysis'
+    analyze_statistics(step2_data_path, step2_stat_result_path)
+
+    # Step 3: Further clean and refine data, and prepare for performance analysis.
+    clean_data = fill_and_clean(step2_data_path, 10, None,
+                                120, 1e-5, 1e10, 0.1,
+                                1e10, 0.1, 5, -5, 5, -5)
+    step3_data_path = './Dataset/UGA/output/step3.csv'
+    revise_traj_id(clean_data, step3_data_path, 0.1, 70, 0, 0)
+    UGA_save_numeric_csv(pd.read_csv(step3_data_path), step3_data_path)
+    step3_stat_result_path = './Dataset/UGA/output/step3_analysis'
+    analyze_statistics(step3_data_path, step3_stat_result_path)
+
+    # Analysis
+    performance_result_path = './Dataset/UGA/output/performance_metrics.csv'
+    analyze_AV_performance(step3_data_path, performance_result_path)
+
+    scatter_plot_path = './Dataset/UGA/output/scatter'
+    draw_scatter(step3_data_path, scatter_plot_path)
+
+    calibration_result_path = './Dataset/UGA/output/calibration.csv'
+    linear_regression = CFModelRegress(step3_data_path, 0.1)
     linear_regression.main(calibration_result_path, 'linear')
 
 
@@ -668,6 +709,7 @@ if __name__ == "__main__":
     # CATS_ACC()
     # CATS_platoon()
     # CATS_UWM()
+    # UGA()
     #
     # OpenACC_Casale()
     # OpenACC_Vicolungo()
