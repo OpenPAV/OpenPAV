@@ -1,3 +1,35 @@
+
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=OpenPAV&project=OpenPAV&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div>
+
 # Open-PAV
 
 OpenPAV (Open Production Automated Vehicle) is an open platform designed to facilitate **data collection, behavior modeling, and performance evaluation** of production automated vehicle (PAV). It integrates diverse datasets and calibrated vehicle models, making it an essential tool for researchers and developers aiming to study PAV dynamics and their impacts. The project encourages contributions from the research community and provides ready-to-use model parameters for seamless integration with simulation tools. Check the [OpenPAV Website](https://openpav.github.io/OpenPAV) for more details.
