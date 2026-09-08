@@ -33,28 +33,26 @@
   <main class="container">
     <section class="hero">
       <h1>Billboard</h1>
-      <p>Performance billboard across Safety, Mobility, User Comfort, and Energy-efficiency.</p>
+      <p>Four independent performance rankings: Safety, Mobility, User Comfort, and Energy Efficiency. Rank 1 is best in each dimension; no composite score or overall rank is calculated.</p>
     </section>
 
     <section class="card">
       <h2>Results</h2>
       <div class="tab-bar" role="tablist" aria-label="Billboard categories">
-        <button class="tab-btn active" data-target="tab-overall" type="button">Overall</button>
+        <button class="tab-btn active" data-target="tab-overall" type="button">Performance Rankings</button>
         <button class="tab-btn" data-target="tab-safety" type="button">Safety</button>
         <button class="tab-btn" data-target="tab-mobility" type="button">Mobility</button>
         <button class="tab-btn" data-target="tab-comfort" type="button">User Comfort</button>
-        <button class="tab-btn" data-target="tab-energy" type="button">Energy-efficiency</button>
+        <button class="tab-btn" data-target="tab-fuel" type="button">Energy Efficiency</button>
       </div>
 
       <div id="tab-overall" class="tab-panel active">
-        <h3>Overall Ranking</h3>
+        <h3>Performance Rankings</h3>
         <img
           class="content-image ranking-image"
-          src="images/ranking.png"
-          alt="Overall ranking radar chart"
-          onerror="this.onerror=null;this.src='images/rank.png';"
+          src="images/rank.png"
+          alt="Radar charts of eight calibrated vehicle models showing independent safety, mobility, comfort, and energy efficiency ranks; 1 is best"
         >
-        <p class="chart-caption">Overall performance radar chart across the four evaluation dimensions.</p>
         <p class="table-note">Brand and dataset metadata used by the ranking.</p>
         <div class="table-wrap">
           <table>
@@ -79,6 +77,7 @@
             </tbody>
           </table>
         </div>
+        <p class="table-note"><strong>Note:</strong> These results evaluate eight calibrated vehicle models under generated single-lane adaptive cruise control (ACC) car-following scenarios. They demonstrate the platform workflow and do not constitute a comprehensive real-world ranking of vehicle models or brands.</p>
         <h4>References</h4>
         <ol class="doc-list">
           <li>
@@ -102,7 +101,7 @@
       <div id="tab-safety" class="tab-panel">
         <h3>Safety Ranking</h3>
         <p class="lead">Safety is evaluated using Time-to-Collision (TTC). The columns in the table represent TTC intervals, ordered from the collision state to increasingly safer conditions.</p>
-        <p class="table-note">TTC ranges probability by model.</p>
+        <p class="table-note">Estimated stationary probabilities of the TTC blocks and safety ranks for the eight calibrated PAV models. Displayed probabilities may not sum exactly to one because of rounding. \(T_{\mathrm{cap}}\) is the TTC cap used in the evaluation.</p>
 
         <div class="table-wrap">
           <table>
@@ -117,18 +116,18 @@
                 <th>(1.5,3]</th>
                 <th>(3,5]</th>
                 <th>(5,8]</th>
-                <th>(8,&infin;)</th>
+                <th>\((8,T_{\mathrm{cap}}]\)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Toyota Corolla LE (2020)</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>2.3E-07</td><td>1.3E-04</td><td>3.1E-03</td><td>1.0E+00</td></tr>
-              <tr><td>2</td><td>KGM Rexton (N/A)</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>2.1E-06</td><td>2.4E-04</td><td>1.1E-03</td><td>1.1E-02</td><td>9.9E-01</td></tr>
-              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>4.2E-08</td><td>9.9E-05</td><td>1.1E-04</td><td>2.2E-04</td><td>4.4E-04</td><td>8.2E-04</td><td>3.9E-03</td><td>9.9E-01</td></tr>
-              <tr><td>4</td><td>Tesla (N/A)</td><td>2.0E-06</td><td>7.4E-05</td><td>8.3E-05</td><td>1.8E-04</td><td>6.3E-04</td><td>3.1E-03</td><td>3.2E-02</td><td>9.6E-01</td></tr>
-              <tr><td>5</td><td>Mazda 3 (2019)</td><td>1.4E-06</td><td>4.1E-05</td><td>2.0E-04</td><td>4.5E-04</td><td>1.3E-03</td><td>2.7E-03</td><td>2.0E-02</td><td>9.8E-01</td></tr>
-              <tr><td>6</td><td>BMW X5 (2018)</td><td>6.5E-06</td><td>1.1E-04</td><td>3.5E-04</td><td>8.5E-05</td><td>2.6E-05</td><td>1.2E-03</td><td>4.0E-01</td><td>6.0E-01</td></tr>
-              <tr><td>7</td><td>N/A (2019)</td><td>8.9E-06</td><td>1.5E-03</td><td>1.9E-03</td><td>2.0E-03</td><td>3.5E-03</td><td>2.0E-02</td><td>8.3E-02</td><td>8.9E-01</td></tr>
-              <tr><td>8</td><td>Ford S-Max (2018)</td><td>2.6E-05</td><td>7.5E-04</td><td>1.0E-03</td><td>1.1E-03</td><td>1.2E-03</td><td>2.6E-03</td><td>2.2E-02</td><td>9.7E-01</td></tr>
+              <tr><td>1</td><td>Toyota Corolla LE (2020)</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>0.0E+00</td><td>5.5E-13</td><td>1.2E-06</td><td>3.8E-04</td><td>1.0E+00</td></tr>
+              <tr><td>2</td><td>Tesla (unknown)</td><td>0.0E+00</td><td>2.3E-12</td><td>1.6E-06</td><td>2.8E-05</td><td>1.9E-04</td><td>5.3E-04</td><td>9.9E-03</td><td>9.9E-01</td></tr>
+              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>5.1E-11</td><td>4.9E-06</td><td>1.3E-04</td><td>2.1E-04</td><td>5.5E-04</td><td>7.5E-04</td><td>1.7E-03</td><td>1.0E+00</td></tr>
+              <tr><td>4</td><td>Ford S-Max (2018)</td><td>1.4E-08</td><td>5.4E-06</td><td>1.1E-05</td><td>5.4E-05</td><td>4.7E-04</td><td>1.1E-03</td><td>1.2E-02</td><td>9.9E-01</td></tr>
+              <tr><td>5</td><td>KGM Rexton (unknown)</td><td>3.4E-08</td><td>3.7E-07</td><td>3.2E-05</td><td>9.2E-05</td><td>2.5E-04</td><td>1.1E-03</td><td>1.2E-02</td><td>9.9E-01</td></tr>
+              <tr><td>6</td><td>Mazda 3 (2019)</td><td>7.5E-08</td><td>6.0E-06</td><td>4.9E-05</td><td>2.1E-04</td><td>7.3E-04</td><td>1.8E-03</td><td>1.1E-02</td><td>9.9E-01</td></tr>
+              <tr><td>7</td><td>N/A (2019)</td><td>2.7E-06</td><td>2.5E-04</td><td>3.0E-04</td><td>6.4E-04</td><td>7.0E-04</td><td>1.8E-03</td><td>9.0E-03</td><td>9.9E-01</td></tr>
+              <tr><td>8</td><td>BMW X5 (2018)</td><td>3.3E-05</td><td>8.6E-04</td><td>1.4E-03</td><td>1.1E-03</td><td>2.1E-03</td><td>4.0E-03</td><td>5.3E-02</td><td>9.4E-01</td></tr>
             </tbody>
           </table>
         </div>
@@ -147,13 +146,13 @@
             </thead>
             <tbody>
               <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
-              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
-              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
               <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
-              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
-              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
-              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
               <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
             </tbody>
           </table>
         </div>
@@ -169,7 +168,7 @@
         </p>
         <div class="formula">
           \[
-          \mathcal{K} = \{ [0,0], (0,0.25], (0.25,0.75], (0.75,1.5], (1.5,3], (3,5], (5,8], (8,\infty) \}.
+          \mathcal{K} = \{ [0,0], (0,0.25], (0.25,0.75], (0.75,1.5], (1.5,3], (3,5], (5,8], (8,T_{\mathrm{cap}}] \}.
           \]
         </div>
         <p>
@@ -187,7 +186,7 @@
         <p>
           PAVs are ranked using lexicographic comparison on \( \mathbf{z}_i \) from the most hazardous block to the least hazardous block.
           This means we first compare collision-state probability, then proceed block-by-block only when ties occur. Under this
-          rule, models with larger probability mass in safety-critical TTC blocks receive lower ranks.
+          rule, models with larger probability mass in the first differing safety-critical TTC block receive worse (numerically larger) ranks; rank 1 is best.
         </p>
 
         <h4>References</h4>
@@ -207,7 +206,7 @@
 
       <div id="tab-mobility" class="tab-panel">
         <h3>Mobility Ranking</h3>
-        <p class="lead">Mobility is measured by average time headway. Smaller time headway implies higher roadway capacity and better mobility.</p>
+        <p class="lead">Mobility is measured by mean time headway under the generated driving scenarios. Smaller mean time headway receives a better mobility rank; rank 1 is best.</p>
         <p class="table-note">Mobility ranking results by model.</p>
         <div class="table-wrap">
           <table>
@@ -219,14 +218,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>BMW X5 (2018)</td><td>0.909</td></tr>
-              <tr><td>2</td><td>Toyota Corolla LE (2020)</td><td>0.975</td></tr>
-              <tr><td>3</td><td>Ford S-Max (2018)</td><td>1.007</td></tr>
-              <tr><td>4</td><td>Mazda 3 (2019)</td><td>1.211</td></tr>
-              <tr><td>5</td><td>N/A (2019)</td><td>1.370</td></tr>
-              <tr><td>6</td><td>KGM Rexton (N/A)</td><td>1.390</td></tr>
-              <tr><td>7</td><td>Lincoln MKZs (2016)</td><td>1.669</td></tr>
-              <tr><td>8</td><td>Tesla (N/A)</td><td>1.721</td></tr>
+              <tr><td>1</td><td>Ford S-Max (2018)</td><td>0.982</td></tr>
+              <tr><td>2</td><td>Toyota Corolla LE (2020)</td><td>1.055</td></tr>
+              <tr><td>3</td><td>Mazda 3 (2019)</td><td>1.076</td></tr>
+              <tr><td>4</td><td>N/A (2019)</td><td>1.292</td></tr>
+              <tr><td>5</td><td>KGM Rexton (unknown)</td><td>1.376</td></tr>
+              <tr><td>6</td><td>BMW X5 (2018)</td><td>1.492</td></tr>
+              <tr><td>7</td><td>Lincoln MKZs (2016)</td><td>1.727</td></tr>
+              <tr><td>8</td><td>Tesla (unknown)</td><td>1.797</td></tr>
             </tbody>
           </table>
         </div>
@@ -243,12 +242,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
-              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
               <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
               <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
               <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
               <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
               <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
               <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
             </tbody>
@@ -271,7 +270,7 @@
 
       <div id="tab-comfort" class="tab-panel">
         <h3>User Comfort Ranking</h3>
-        <p class="lead">User comfort is evaluated using squared acceleration. Larger acceleration variations indicate lower comfort.</p>
+        <p class="lead">User comfort is evaluated using mean squared acceleration under the generated driving scenarios. Lower mean squared acceleration receives a better comfort rank; rank 1 is best.</p>
         <p class="table-note">User comfort ranking results by model.</p>
         <div class="table-wrap">
           <table>
@@ -283,14 +282,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>N/A (2019)</td><td>0.038</td></tr>
-              <tr><td>2</td><td>Tesla (N/A)</td><td>0.042</td></tr>
-              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>0.053</td></tr>
-              <tr><td>4</td><td>KGM Rexton (N/A)</td><td>0.069</td></tr>
-              <tr><td>5</td><td>Ford S-Max (2018)</td><td>0.079</td></tr>
-              <tr><td>6</td><td>Mazda 3 (2019)</td><td>0.159</td></tr>
-              <tr><td>7</td><td>Toyota Corolla LE (2020)</td><td>0.163</td></tr>
-              <tr><td>8</td><td>BMW X5 (2018)</td><td>0.537</td></tr>
+              <tr><td>1</td><td>BMW X5 (2018)</td><td>0.009</td></tr>
+              <tr><td>2</td><td>N/A (2019)</td><td>0.038</td></tr>
+              <tr><td>3</td><td>Tesla (unknown)</td><td>0.040</td></tr>
+              <tr><td>4</td><td>Lincoln MKZs (2016)</td><td>0.055</td></tr>
+              <tr><td>5</td><td>Ford S-Max (2018)</td><td>0.080</td></tr>
+              <tr><td>6</td><td>KGM Rexton (unknown)</td><td>0.088</td></tr>
+              <tr><td>7</td><td>Mazda 3 (2019)</td><td>0.100</td></tr>
+              <tr><td>8</td><td>Toyota Corolla LE (2020)</td><td>0.174</td></tr>
             </tbody>
           </table>
         </div>
@@ -307,14 +306,14 @@
               </tr>
             </thead>
             <tbody>
+              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
               <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
               <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
               <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
-              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
               <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
               <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
               <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
-              <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
             </tbody>
           </table>
         </div>
@@ -333,28 +332,28 @@
         </ol>
       </div>
 
-      <div id="tab-energy" class="tab-panel">
-        <h3>Energy-efficiency Ranking</h3>
-        <p class="lead">Energy-efficiency is measured by fuel consumption rate. Lower fuel consumption indicates better energy-efficiency performance.</p>
-        <p class="table-note">Energy-efficiency ranking results by model. Fuel consumption is estimated using the VT-Micro model (Zegeye et al., 2013).</p>
+      <div id="tab-fuel" class="tab-panel">
+        <h3>Energy Efficiency Ranking</h3>
+        <p class="lead">Energy efficiency is evaluated using the fuel-use proxy. Lower values receive a better rank; rank 1 is best.</p>
+        <p class="table-note">Fuel-use Proxy is the mean rate predicted by the same hypothetical VT-Micro fuel model (Zegeye et al., 2013) applied to all generated driving trajectories. It compares trajectories, not actual vehicle energy use; the Tesla value is not electricity consumption.</p>
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
                 <th>Rank</th>
                 <th>Model</th>
-                <th>Fuel Consumption (L/s)</th>
+                <th>Fuel-use Proxy (L/s)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>Tesla (N/A)</td><td>0.00220</td></tr>
-              <tr><td>2</td><td>KGM Rexton (N/A)</td><td>0.00298</td></tr>
-              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>0.00300</td></tr>
-              <tr><td>4</td><td>Ford S-Max (2018)</td><td>0.00314</td></tr>
-              <tr><td>5</td><td>N/A (2019)</td><td>0.00318</td></tr>
-              <tr><td>6</td><td>Toyota Corolla LE (2020)</td><td>0.00326</td></tr>
-              <tr><td>7</td><td>Mazda 3 (2019)</td><td>0.00362</td></tr>
-              <tr><td>8</td><td>BMW X5 (2018)</td><td>0.01123</td></tr>
+              <tr><td>1</td><td>Tesla (unknown)</td><td>0.00206</td></tr>
+              <tr><td>2</td><td>BMW X5 (2018)</td><td>0.00291</td></tr>
+              <tr><td>3</td><td>Lincoln MKZs (2016)</td><td>0.00303</td></tr>
+              <tr><td>4</td><td>KGM Rexton (unknown)</td><td>0.00304</td></tr>
+              <tr><td>5</td><td>Ford S-Max (2018)</td><td>0.00324</td></tr>
+              <tr><td>6</td><td>Mazda 3 (2019)</td><td>0.00330</td></tr>
+              <tr><td>7</td><td>Toyota Corolla LE (2020)</td><td>0.00336</td></tr>
+              <tr><td>8</td><td>N/A (2019)</td><td>0.00393</td></tr>
             </tbody>
           </table>
         </div>
@@ -372,13 +371,13 @@
             </thead>
             <tbody>
               <tr><td>Tesla</td><td>N/A</td><td>N/A</td><td>Central Ohio ACC</td><td>The tested Tesla has been retrofitted (Xia et al., 2023).</td></tr>
-              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
-              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
-              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
-              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
-              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
-              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
               <tr><td>BMW</td><td>X5</td><td>2018</td><td>OpenACC ZalaZone</td><td>-</td></tr>
+              <tr><td>Lincoln</td><td>MKZs</td><td>2016</td><td>CATS ACC</td><td>-</td></tr>
+              <tr><td>KGM</td><td>Rexton</td><td>N/A</td><td>OpenACC-Casale</td><td>-</td></tr>
+              <tr><td>Ford</td><td>S-Max</td><td>2018</td><td>OpenACC Vicolungo</td><td>-</td></tr>
+              <tr><td>Mazda</td><td>3</td><td>2019</td><td>OpenACC Asta</td><td>-</td></tr>
+              <tr><td>Toyota</td><td>Corolla LE</td><td>2020</td><td>MicroSimACC</td><td>-</td></tr>
+              <tr><td>N/A</td><td>N/A</td><td>2019</td><td>Vanderbilt ACC</td><td>Unknown commercial SUV (Wang et al., 2019).</td></tr>
             </tbody>
           </table>
         </div>
